@@ -10,5 +10,10 @@ package imad.maquinavendingrubenimad;
  * @author MSI
  */
 public class Bandeja {
-    
+     private String tipoDeProducto;
+    private int codigoProducto;
+    private double precioProducto;
+    private int stockBandeja;
+
+   
 }
