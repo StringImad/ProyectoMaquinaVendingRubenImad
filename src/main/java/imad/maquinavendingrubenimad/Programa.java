@@ -28,7 +28,8 @@ public class Programa {
         if (codigo.contentEquals(codigoGenerado)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al menu de administracion.");
 
-        } else {
+        }
+         else {
             switch (Integer.parseInt(codigo)) {
                 case 1:
                     JOptionPane.showMessageDialog(null, "El precio es 1€.");
