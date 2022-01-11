@@ -10,7 +10,8 @@ package imad.maquinavendingrubenimad;
  * @author MSI
  */
 public class Bandeja {
-     private String tipoDeProducto;
+
+    private String tipoDeProducto;
     private int codigoProducto;
     private double precioProducto;
     private int stockBandeja;
@@ -58,5 +59,5 @@ public class Bandeja {
     public String toString() {
         return "Bandeja{" + "tipoDeProducto=" + tipoDeProducto + ", codigoProducto=" + codigoProducto + ", precioProducto=" + precioProducto + ", stockBandeja=" + stockBandeja + '}';
     }
-    
+
 }

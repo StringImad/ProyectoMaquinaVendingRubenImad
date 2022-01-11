@@ -16,8 +16,9 @@ public class Programa {
     public static void main(String[] args) {
         //Declaracion de variables
         String codigo = "";
-        String codigoGenerado = "";
+        String codigoGenerado = Utilidades.getPassword();
         try {
+            JOptionPane.showMessageDialog(null, "El codigo del administrador es: "+codigoGenerado);
             codigo = JOptionPane.showInputDialog("Introduce un codigo");
         } catch (NumberFormatException ex) {
             //Mensaje de error

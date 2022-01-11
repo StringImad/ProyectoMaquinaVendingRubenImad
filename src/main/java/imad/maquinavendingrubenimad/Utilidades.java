@@ -11,7 +11,7 @@ package imad.maquinavendingrubenimad;
  */
 public class Utilidades {
     
-    public String getPassword() {
+    public static String getPassword() {
         
         String numeros = "0123456789";
 
