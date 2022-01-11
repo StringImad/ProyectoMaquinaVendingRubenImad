@@ -18,8 +18,7 @@ public class Programa {
         String codigo = "";
         String codigoGenerado = Utilidades.getPassword();
         try {
-            JOptionPane.showMessageDialog(null, "El codigo del administrador es: "+codigoGenerado);
-            codigo = JOptionPane.showInputDialog("Introduce un codigo");
+            codigo = JOptionPane.showInputDialog("El codigo del administrador es: "+codigoGenerado+"\nIntroduce un codigo");
         } catch (NumberFormatException ex) {
             //Mensaje de error
             JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
