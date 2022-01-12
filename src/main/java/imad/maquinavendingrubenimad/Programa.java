@@ -18,7 +18,7 @@ public class Programa {
         String codigo = "";
         String codigoGenerado = Utilidades.getPassword();
         try {
-            codigo = JOptionPane.showInputDialog("El codigo del administrador es: "+codigoGenerado+"\nIntroduce un codigo");
+            codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
         } catch (NumberFormatException ex) {
             //Mensaje de error
             JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
@@ -28,8 +28,7 @@ public class Programa {
         if (codigo.contentEquals(codigoGenerado)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al menu de administracion.");
 
-        }
-         else {
+        } else {
             switch (Integer.parseInt(codigo)) {
                 case 1:
                     JOptionPane.showMessageDialog(null, "El precio es 1€.");
@@ -51,7 +50,8 @@ public class Programa {
                     break;
 
                 case 6:
-
+                    JOptionPane.showMessageDialog(null, "El precio es 1€.");
+                    break;
             }
         }
     }
