@@ -5,14 +5,16 @@
  */
 package imad.maquinavendingrubenimad;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diabl
  */
 public class Utilidades {
-    
+
     public static String getPassword() {
-        
+
         String numeros = "0123456789";
 
         String mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -20,7 +22,7 @@ public class Utilidades {
         String minus = "abcdefghijklmnopqrstuvwxyz";
 
         String esp = "#$%&()*+,-.:;<=>@";
-        
+
         String todos = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%&()*+,-.:;<=>@";
 
         String pswd = "";
@@ -45,12 +47,31 @@ public class Utilidades {
 
         return pswd;
     }
-    public static String formaPagoEfectivoTarjeta(){
+
+    public static String formaPagoEfectivoTarjeta() {
         String formaDePago = "";
-        
-        
-        
+        String[] botones = {"Efectivo", "Tarjeta", "salir"};
+        int ventana = JOptionPane.showOptionDialog(null,
+                "Elige el modo de pago:",
+                "Bienvenido al sistema de cobro",
+                JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.QUESTION_MESSAGE, null,
+                botones, botones[0]);
+        switch (ventana) {
+            case 0:
+                JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
+                
+
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta o acercala al contactless");
+
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null,"Operacion cancelada con exito");
+
+        }
         return formaDePago;
     }
-    
+
 }

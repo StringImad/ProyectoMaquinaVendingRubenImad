@@ -17,14 +17,20 @@ public class Programa {
         //Declaracion de variables
         String codigo = "";
         String codigoGenerado = Utilidades.getPassword();
-        try {
-            codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
-        } catch (NumberFormatException ex) {
-            //Mensaje de error
-            JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
-                    + "Por favor ingrese un valor valido", "Error de formato",
-                    JOptionPane.ERROR_MESSAGE);
-        }
+//        boolean repetir = true;
+//        do {
+//            repetir = true;
+//            try {
+                codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
+//           repetir = true;
+//            } catch (NumberFormatException ex) {
+//                //Mensaje de error
+//                JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+//                        + "Por favor ingrese un valor valido", "Error de formato",
+//                        JOptionPane.ERROR_MESSAGE);
+////            repetir = false;
+//            }
+//        } while (repetir);
         if (codigo.contentEquals(codigoGenerado)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al menu de administracion.");
 
@@ -32,6 +38,7 @@ public class Programa {
             switch (Integer.parseInt(codigo)) {
                 case 1:
                     JOptionPane.showMessageDialog(null, "El precio es 1€.");
+                    Utilidades.formaPagoEfectivoTarjeta();
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null, "El precio es 1€.");
