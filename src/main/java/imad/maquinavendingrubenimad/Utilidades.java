@@ -45,5 +45,12 @@ public class Utilidades {
 
         return pswd;
     }
+    public static String formaPagoEfectivoTarjeta(){
+        String formaDePago = "";
+        
+        
+        
+        return formaDePago;
+    }
     
 }
