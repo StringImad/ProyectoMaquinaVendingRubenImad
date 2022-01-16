@@ -18,14 +18,41 @@ public class Dinero {
     }
 
     public Dinero(int valor, int cantidad) {
-        if (valor >= 1 || valor <= 2000) {
-            this.valor = valor;
+        switch(valor){
+            case 1: 
+                this.valor = valor;
+                break;
+            case 5: 
+                this.valor = valor;
+                break;
+            case 10:
+                this.valor = valor;
+                break;
+            case 20:
+                this.valor = valor;
+                break;
+            case 50:
+                this.valor = valor;
+                break;
+            case 100:
+                this.valor = valor;
+                break;
+            case 200:
+                this.valor = valor;
+                break;
+            case 500:
+                this.valor = valor;
+                break;
+            case 10000:
+                this.valor = valor;
+                break;
+            case 20000:
+                this.valor = valor;
+                break;
+            default:
+                break;
         }
-        if (cantidad < 5) {
-            this.cantidad = 5;
-        } else {
-            this.cantidad = cantidad;
-        }
+        this.cantidad = cantidad;
     }
 
     public int getValor() {

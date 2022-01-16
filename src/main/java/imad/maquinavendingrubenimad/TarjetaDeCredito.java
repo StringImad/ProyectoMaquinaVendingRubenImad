@@ -13,12 +13,14 @@ import java.time.LocalDateTime;
  * @author diabl
  */
 public class TarjetaDeCredito {
-    private int numero;
+    private String numero;
     private LocalDateTime fechaVencimiento;
     private int cvv;
 
-    public TarjetaDeCredito(int numero, LocalDateTime fechaVencimiento, int cvv) {
-        this.numero = numero;
+    public TarjetaDeCredito(String numero, LocalDateTime fechaVencimiento, int cvv) {
+        if(numero.length() == 16){
+           this.numero = numero; 
+        }
         this.fechaVencimiento = fechaVencimiento;
         this.cvv = cvv;
     }
@@ -29,7 +31,7 @@ public class TarjetaDeCredito {
         return fecha.isBefore(ahora);
     }
     
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
