@@ -14,13 +14,12 @@ import java.time.LocalDateTime;
  */
 public class TarjetaDeCredito {
     private String numero;
-    private LocalDateTime fechaVencimiento;
+    private String fechaVencimiento;
     private int cvv;
 
-    public TarjetaDeCredito(String numero, LocalDateTime fechaVencimiento, int cvv) {
-        if(numero.length() == 16){
-           this.numero = numero; 
-        }
+    public TarjetaDeCredito(String numero, String fechaVencimiento, int cvv) {
+        
+        this.numero = numero; 
         this.fechaVencimiento = fechaVencimiento;
         this.cvv = cvv;
     }
@@ -40,7 +39,7 @@ public class TarjetaDeCredito {
         return numero;
     }
 
-    public LocalDateTime getFechaVencimiento() {
+    public String getFechaVencimiento() {
         return fechaVencimiento;
     }
 
