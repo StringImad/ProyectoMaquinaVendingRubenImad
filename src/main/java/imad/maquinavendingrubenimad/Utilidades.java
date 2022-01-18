@@ -6,6 +6,8 @@
 package imad.maquinavendingrubenimad;
 
 import java.time.LocalDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -76,11 +78,12 @@ public class Utilidades {
 
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
         String codigo = null;
-        int codigoComprobacion;
+        double codigoComprobacion;
         String fechaCaducidad;
         String cvvString;
         int cvv = 0;
         boolean comprobarIntroduccionIncorrectaUsuario = false;
+        boolean formatoFechaCaducidadCorrecto = false;
         //Bucle control de introduccion correcta de valores
 
         do {
@@ -88,7 +91,7 @@ public class Utilidades {
             try {
                 do {
                     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
-                    codigoComprobacion = Integer.parseInt(codigo);
+                    codigoComprobacion = Double.parseDouble(codigo);
                     comprobarIntroduccionIncorrectaUsuario = false;
                 } while (codigo.length() != 16);
             } catch (NumberFormatException ex) {
@@ -102,8 +105,52 @@ public class Utilidades {
         //     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
 
         fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
-        cvvString = JOptionPane.showInputDialog("Introduce el cvv");
-        cvv = Integer.parseInt(cvvString);
+        Pattern patron = Pattern.compile("[1-31]{1}/[22-50]{1}");
+//        patron.matcher(fechaCaducidad);
+        Matcher mat;
+        do {
+            comprobarIntroduccionIncorrectaUsuario = false;
+            try {
+                do {
+                    fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
+                    mat = patron.matcher(fechaCaducidad);
+
+                    comprobarIntroduccionIncorrectaUsuario = false;
+                    if (mat.matches()) {
+                       formatoFechaCaducidadCorrecto = false;
+                    } else {
+                        formatoFechaCaducidadCorrecto = true;
+                    }
+
+                } while (formatoFechaCaducidadCorrecto);
+            } catch (NumberFormatException ex) {
+                //Mensaje de error
+                JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                        + "Por favor ingrese un valor valido", "Error de formato",
+                        JOptionPane.ERROR_MESSAGE);
+                comprobarIntroduccionIncorrectaUsuario = true;
+            }
+        } while (comprobarIntroduccionIncorrectaUsuario);
+
+        //   cvvString = JOptionPane.showInputDialog("Introduce el cvv");
+        do {
+            comprobarIntroduccionIncorrectaUsuario = false;
+            try {
+                do {
+                    cvvString = JOptionPane.showInputDialog("Introduce el cvv");
+                    cvv = Integer.parseInt(cvvString);
+                    comprobarIntroduccionIncorrectaUsuario = false;
+                } while (codigo.length() != 3);
+            } catch (NumberFormatException ex) {
+                //Mensaje de error
+                JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                        + "Por favor ingrese un valor valido", "Error de formato",
+                        JOptionPane.ERROR_MESSAGE);
+                comprobarIntroduccionIncorrectaUsuario = true;
+            }
+        } while (comprobarIntroduccionIncorrectaUsuario);
+
+        // cvv = Integer.parseInt(cvvString);
         TarjetaDeCredito introducida = new TarjetaDeCredito(codigo, fechaCaducidad, cvv);
         return introducida;
     }
