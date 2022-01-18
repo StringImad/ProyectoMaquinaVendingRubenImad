@@ -4,6 +4,7 @@
  */
 package imad.maquinavendingrubenimad;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 /**
@@ -21,16 +22,17 @@ public class MaquinaVending {
     private TarjetaDeCredito t1;
     private TarjetaDeCredito t2;
     private TarjetaDeCredito t3;
-    private int tamaño = 6;
+    private final int tamaño = 6;
     private int deposito;
     private String ubicacion;
-    private UUID id;
+    private final UUID id;
     private final String psw;
+    private LocalDate fecha;
 
     
     public MaquinaVending(Bandeja bandeja, Bandeja bandeja2, Bandeja bandeja3, 
             Bandeja bandeja4, Bandeja bandeja5, Bandeja bandeja6, TarjetaDeCredito t1,
-            TarjetaDeCredito t2, TarjetaDeCredito t3, int deposito, String ubicacion) {
+            TarjetaDeCredito t2, TarjetaDeCredito t3, int deposito, String ubicacion,LocalDate fecha) {
         this.bandeja = bandeja;
         this.bandeja2 = bandeja2;
         this.bandeja3 = bandeja3;
@@ -44,6 +46,7 @@ public class MaquinaVending {
         this.ubicacion = ubicacion;
         this.id = UUID.randomUUID();
         this.psw = Utilidades.getPassword();
+        this.fecha = fecha;
     }
     
     
@@ -100,6 +103,11 @@ public class MaquinaVending {
         return id;
     }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+    
+
     public void setBandeja(Bandeja bandeja) {
         this.bandeja = bandeja;
     }
@@ -144,9 +152,14 @@ public class MaquinaVending {
         this.ubicacion = ubicacion;
     }
 
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+    
+
     @Override
     public String toString() {
-        return "MaquinaVending{" + "bandeja=" + bandeja + ", bandeja2=" + bandeja2 + ", bandeja3=" + bandeja3 + ", bandeja4=" + bandeja4 + ", bandeja5=" + bandeja5 + ", bandeja6=" + bandeja6 + ", t1=" + t1 + ", t2=" + t2 + ", t3=" + t3 + ", tama\u00f1o=" + tamaño + ", deposito=" + deposito + ", ubicacion=" + ubicacion + ", id=" + id + ", psw=" + psw + '}';
+        return "MaquinaVending{" + "bandeja=" + bandeja + ", bandeja2=" + bandeja2 + ", bandeja3=" + bandeja3 + ", bandeja4=" + bandeja4 + ", bandeja5=" + bandeja5 + ", bandeja6=" + bandeja6 + ", t1=" + t1 + ", t2=" + t2 + ", t3=" + t3 + ", tama\u00f1o=" + tamaño + ", deposito=" + deposito + ", ubicacion=" + ubicacion + ", id=" + id + ", psw=" + psw + ", fecha " + fecha + '}';
     }
 
     
