@@ -26,10 +26,15 @@ public class TarjetaDeCredito {
     }
     
     //Método para saber si la tarjeta es valida para realizar el pago 
-    public static boolean ValidarFecha(LocalDateTime fecha){
-        LocalDateTime ahora = LocalDateTime.now();
-        return fecha.isBefore(ahora);
-    }
+//    public static boolean ValidarFecha(LocalDateTime fecha){
+//        LocalDateTime ahora = LocalDateTime.now();
+//        return fecha.isBefore(ahora);
+//    }
+    
+    public boolean CompararTarjetas(TarjetaDeCredito t1) {
+        
+    return t1.cvv == this.cvv && t1.numero == this.numero && t1.fechaVencimiento == this.fechaVencimiento; 
+}
     
     public String getNumero() {
         return numero;
