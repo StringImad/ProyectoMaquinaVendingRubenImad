@@ -65,7 +65,7 @@ public class Utilidades {
                 break;
             case 1:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta");
-                TarjetaDeCredito introducida = new TarjetaDeCredito(formaDePago, LocalDateTime.MIN, ventana);
+                validacionTarjetaIntroducida();
                 break;
             case 2:
                 JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
@@ -75,17 +75,36 @@ public class Utilidades {
     }
 
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
-        String codigo;
+        String codigo = null;
+        int codigoComprobacion;
         String fechaCaducidad;
         String cvvString;
         int cvv = 0;
-        codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
+        boolean comprobarIntroduccionIncorrectaUsuario = false;
+        //Bucle control de introduccion correcta de valores
+
+        do {
+            comprobarIntroduccionIncorrectaUsuario = false;
+            try {
+                do {
+                    codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
+                    codigoComprobacion = Integer.parseInt(codigo);
+                    comprobarIntroduccionIncorrectaUsuario = false;
+                } while (codigo.length() != 16);
+            } catch (NumberFormatException ex) {
+                //Mensaje de error
+                JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                        + "Por favor ingrese un valor valido", "Error de formato",
+                        JOptionPane.ERROR_MESSAGE);
+                comprobarIntroduccionIncorrectaUsuario = true;
+            }
+        } while (comprobarIntroduccionIncorrectaUsuario);
+        //     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
+
         fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
-        cvvString = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
+        cvvString = JOptionPane.showInputDialog("Introduce el cvv");
         cvv = Integer.parseInt(cvvString);
         TarjetaDeCredito introducida = new TarjetaDeCredito(codigo, fechaCaducidad, cvv);
-        
-        
         return introducida;
     }
 
