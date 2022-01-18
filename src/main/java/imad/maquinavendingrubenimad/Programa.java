@@ -21,7 +21,7 @@ public class Programa {
 //        do {
 //            repetir = true;
 //            try {
-                codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
+        codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
 //           repetir = true;
 //            } catch (NumberFormatException ex) {
 //                //Mensaje de error

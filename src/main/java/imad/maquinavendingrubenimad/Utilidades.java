@@ -5,6 +5,7 @@
  */
 package imad.maquinavendingrubenimad;
 
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,18 +61,30 @@ public class Utilidades {
         switch (ventana) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
-                
 
                 break;
             case 1:
-                JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta o acercala al contactless");
-
+                JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta");
+                TarjetaDeCredito introducida = new TarjetaDeCredito(formaDePago, LocalDateTime.MIN, ventana);
                 break;
             case 2:
-                JOptionPane.showMessageDialog(null,"Operacion cancelada con exito");
+                JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
 
         }
         return formaDePago;
+    }
+
+    public static TarjetaDeCredito validacionTarjetaIntroducida() {
+        String codigo;
+        String fechaCaducidad;
+        String cvvString;
+        int cvv = 0;
+        codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
+        fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
+        cvvString = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
+        cvv = Integer.parseInt(cvvString);
+        TarjetaDeCredito introducida = new TarjetaDeCredito(codigo, fechaCaducidad, cvv);
+        return introducida;
     }
 
 }
