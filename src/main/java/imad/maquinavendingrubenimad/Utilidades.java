@@ -89,6 +89,7 @@ public class Utilidades {
         do {
             comprobarIntroduccionIncorrectaUsuario = false;
             try {
+                comprobarIntroduccionIncorrectaUsuario = false;
                 do {
                     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
                     codigoComprobacion = Double.parseDouble(codigo);
@@ -105,7 +106,7 @@ public class Utilidades {
         //     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
 
         fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
-        Pattern patron = Pattern.compile("[1-31]{1}/[22-50]{1}");
+        Pattern patron = Pattern.compile("[1-12]{1}\\/[22-50]{1}");
 //        patron.matcher(fechaCaducidad);
         Matcher mat;
         do {
@@ -116,13 +117,9 @@ public class Utilidades {
                     mat = patron.matcher(fechaCaducidad);
 
                     comprobarIntroduccionIncorrectaUsuario = false;
-                    if (mat.matches()) {
-                       formatoFechaCaducidadCorrecto = false;
-                    } else {
-                        formatoFechaCaducidadCorrecto = true;
-                    }
+                   //mat.matches()
 
-                } while (formatoFechaCaducidadCorrecto);
+                } while (mat.matches());
             } catch (NumberFormatException ex) {
                 //Mensaje de error
                 JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
@@ -140,7 +137,7 @@ public class Utilidades {
                     cvvString = JOptionPane.showInputDialog("Introduce el cvv");
                     cvv = Integer.parseInt(cvvString);
                     comprobarIntroduccionIncorrectaUsuario = false;
-                } while (codigo.length() != 3);
+                } while (cvv == 3);
             } catch (NumberFormatException ex) {
                 //Mensaje de error
                 JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
