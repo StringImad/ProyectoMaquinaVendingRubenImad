@@ -19,9 +19,6 @@ public class Dinero {
 
     public Dinero(int valor, int cantidad) {
         switch(valor){
-            case 1: 
-                this.valor = valor;
-                break;
             case 5: 
                 this.valor = valor;
                 break;
