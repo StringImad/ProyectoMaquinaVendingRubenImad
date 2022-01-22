@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,10 +13,10 @@ public class Bandeja {
 
     private String tipoDeProducto;
     private int codigoProducto;
-    private double precioProducto;
+    private int precioProducto;
     private int stockBandeja;
 
-    public Bandeja(String tipoDeProducto, int codigoProducto, double precioProducto, int stockBandeja) {
+    public Bandeja(String tipoDeProducto, int codigoProducto, int precioProducto, int stockBandeja) {
         this.tipoDeProducto = tipoDeProducto;
         this.codigoProducto = codigoProducto;
         this.precioProducto = precioProducto;
@@ -43,7 +43,7 @@ public class Bandeja {
         return precioProducto;
     }
 
-    public void setPrecioProducto(double precioProducto) {
+    public void setPrecioProducto(int precioProducto) {
         this.precioProducto = precioProducto;
     }
 
