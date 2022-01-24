@@ -35,21 +35,9 @@ public class Programa {
         tarjetas[2] = new TarjetaDeCredito("",LocalDate.of(2022, 1,31),2);
         
         
-        
-//        boolean repetir = true;
-//        do {
-//            repetir = true;
-//            try {
+       
         codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
-//           repetir = true;
-//            } catch (NumberFormatException ex) {
-//                //Mensaje de error
-//                JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
-//                        + "Por favor ingrese un valor valido", "Error de formato",
-//                        JOptionPane.ERROR_MESSAGE);
-////            repetir = false;
-//            }
-//        } while (repetir);
+
         if (codigo.contentEquals(codigoGenerado)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al menu de administracion.");
 
@@ -63,7 +51,7 @@ public class Programa {
                     
                     
                         Utilidades.formaPagoEfectivoTarjeta();
-                   
+                  // tarjetas[0].equals(Utilidades.formaPagoEfectivoTarjeta());
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null, "El precio es " + bandejas[1].getCodigoProducto() + "€.");
