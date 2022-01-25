@@ -6,6 +6,7 @@
 package imad.maquinavendingrubenimad;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,9 +31,9 @@ public class Programa {
         bandejas[5] = new Bandeja("Bocadillo", 6, 500, 15);
         
         TarjetaDeCredito []tarjetas = new TarjetaDeCredito[3];
-        tarjetas[0] = new TarjetaDeCredito("",LocalDate.of(2023, 3,7),2);
-        tarjetas[1] = new TarjetaDeCredito("",LocalDate.of(2021, 6,24),2);
-        tarjetas[2] = new TarjetaDeCredito("",LocalDate.of(2022, 1,31),2);
+        tarjetas[0] = new TarjetaDeCredito("",YearMonth.of(2023, 3),2);
+        tarjetas[1] = new TarjetaDeCredito("",YearMonth.of(2021, 6),2);
+        tarjetas[2] = new TarjetaDeCredito("",YearMonth.of(2022, 1),2);
         
         
        

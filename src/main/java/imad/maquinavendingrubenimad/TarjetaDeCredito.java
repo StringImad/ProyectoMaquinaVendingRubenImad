@@ -6,6 +6,7 @@
 package imad.maquinavendingrubenimad;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 
 
 /**
@@ -15,18 +16,18 @@ import java.time.LocalDate;
 public class TarjetaDeCredito {
 
     private String numero;
-    private LocalDate fechaVencimiento;
+    private YearMonth fechaVencimiento;
     private int cvv;
 
-    public TarjetaDeCredito(String numero, LocalDate fechaVencimiento, int cvv) {
+    public TarjetaDeCredito(String numero, YearMonth fechaVencimiento, int cvv) {
         this.numero = numero;
         this.fechaVencimiento = fechaVencimiento;
         this.cvv = cvv;
     }
 
     //Método para saber si la tarjeta es valida para realizar el pago 
-    public boolean ValidarFecha(LocalDate fecha){
-        LocalDate ahora = LocalDate.now();
+    public boolean ValidarFecha(YearMonth fecha){
+        YearMonth ahora = YearMonth.now();
         return fecha.isAfter(ahora);
     }
     public boolean CompararTarjetas(TarjetaDeCredito t1) {
@@ -38,7 +39,7 @@ public class TarjetaDeCredito {
         return numero;
     }
 
-    public LocalDate getFechaVencimiento() {
+    public YearMonth getFechaVencimiento() {
         return fechaVencimiento;
     }
 
