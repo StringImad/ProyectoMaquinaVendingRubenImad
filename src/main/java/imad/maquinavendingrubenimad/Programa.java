@@ -7,6 +7,7 @@ package imad.maquinavendingrubenimad;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,14 +23,16 @@ public class Programa {
         String efectivo;
         String codigoProductoElegidoString;
         int codigoProductoElegidoInt;
-        Bandeja[] bandejas = new Bandeja[6];
-        bandejas[0] = new Bandeja("Agua", 1, 100, 15);
-        bandejas[1] = new Bandeja("Patatas Fritas", 2, 150, 15);
-        bandejas[2] = new Bandeja("Coca Cola", 3, 200, 15);
-        bandejas[3] = new Bandeja("Nestea", 4, 200, 15);
-        bandejas[4] = new Bandeja("Kinder Bueno", 5, 250, 15);
-        bandejas[5] = new Bandeja("Bocadillo", 6, 500, 15);
-        
+                ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
+
+//        Bandeja[] bandejas = new Bandeja[6];
+//        bandejas[0] = new Bandeja("Agua", 1, 100, 15);
+//        bandejas[1] = new Bandeja("Patatas Fritas", 2, 150, 15);
+//        bandejas[2] = new Bandeja("Coca Cola", 3, 200, 15);
+//        bandejas[3] = new Bandeja("Nestea", 4, 200, 15);
+//        bandejas[4] = new Bandeja("Kinder Bueno", 5, 250, 15);
+//        bandejas[5] = new Bandeja("Bocadillo", 6, 500, 15);
+//        
         TarjetaDeCredito []tarjetas = new TarjetaDeCredito[3];
         tarjetas[0] = new TarjetaDeCredito("",YearMonth.of(2023, 3),2);
         tarjetas[1] = new TarjetaDeCredito("",YearMonth.of(2021, 6),2);
