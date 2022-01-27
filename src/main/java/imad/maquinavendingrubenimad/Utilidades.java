@@ -53,10 +53,9 @@ public class Utilidades {
     }
 
     public static boolean formaPagoEfectivoTarjeta() {
+        TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
         boolean formaDePago = false;
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
-        TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
-        TarjetaDeCredito tarjetaUsuario = validacionTarjetaIntroducida();
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
                 "Bienvenido al sistema de cobro",
@@ -66,17 +65,20 @@ public class Utilidades {
         switch (ventana) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
-
                 break;
             case 1:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta");
+                TarjetaDeCredito tarjetaUsuario = validacionTarjetaIntroducida();
+                System.out.println("----Validaciones------");
+                System.out.println(TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta));
                 if (TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta)) {
                     JOptionPane.showMessageDialog(null, "Compra realizada con exito");
                     formaDePago = true;
                 } else {
                     formaDePago = false;
-                    JOptionPane.showMessageDialog(null, "Tarjeta no valida, Se cancela la operacion", "Error de compra",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Tarjeta no valida", "Error de compra",JOptionPane.ERROR_MESSAGE);
                 }
+
                 break;
             case 2:
                 JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
@@ -85,14 +87,14 @@ public class Utilidades {
         return formaDePago;
     }
 
-    public static TarjetaDeCreditoV2 validacionTarjetaIntroducida() {
+    public static TarjetaDeCredito validacionTarjetaIntroducida() {
         String codigo;
         int cvv = 0;   
         codigo = compruebaIntroduccion16Numeros();
         YearMonth fechaUsuario = compruebaIntroduccionFechaCaducidad();
         cvv = compruebaIntroduccionCvv();
         System.out.println(codigo + "-" + fechaUsuario + "-" + cvv);
-        TarjetaDeCreditoV2 introducida = new TarjetaDeCreditoV2(codigo, fechaUsuario, cvv);
+        TarjetaDeCredito introducida = new TarjetaDeCredito(codigo, fechaUsuario, cvv);
         return introducida;
     }
 
