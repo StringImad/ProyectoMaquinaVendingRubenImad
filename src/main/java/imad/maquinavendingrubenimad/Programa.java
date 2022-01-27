@@ -50,33 +50,33 @@ public class Programa {
             codigoProductoElegidoInt = Integer.parseInt(codigoProductoElegidoString);
             switch (codigoProductoElegidoInt) {
                 case 1:
-                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[0].getCodigoProducto() + "€.");
+//                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[0].getCodigoProducto() + "€.");
                     
                     
                         Utilidades.formaPagoEfectivoTarjeta();
                   // tarjetas[0].equals(Utilidades.formaPagoEfectivoTarjeta());
                     break;
                 case 2:
-                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[1].getCodigoProducto() + "€.");
+//                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[1].getCodigoProducto() + "€.");
                     break;
 
                 case 3:
-                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[2].getCodigoProducto() + "€");
+//                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[2].getCodigoProducto() + "€");
                     Utilidades.formaPagoEfectivoTarjeta();
                     break;
 
                 case 4:
-                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[3].getCodigoProducto() + "€");
+//                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[3].getCodigoProducto() + "€");
                     Utilidades.formaPagoEfectivoTarjeta();
                     break;
 
                 case 5:
-                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[4].getCodigoProducto() + "€");
+//                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[4].getCodigoProducto() + "€");
                     Utilidades.formaPagoEfectivoTarjeta();
                     break;
 
                 case 6:
-                    JOptionPane.showMessageDialog(null, "El precio " + bandejas[5].getCodigoProducto() + "€");
+//                    JOptionPane.showMessageDialog(null, "El precio " + bandejas[5].getCodigoProducto() + "€");
                     Utilidades.formaPagoEfectivoTarjeta();
                     break;
             }
