@@ -85,16 +85,21 @@ public class Utilidades {
         return formaDePago;
     }
 
-    public static TarjetaDeCredito validacionTarjetaIntroducida() {
+    public static TarjetaDeCreditoV2 validacionTarjetaIntroducida() {
+        String codigo;
+        int cvv = 0;   
+        codigo = compruebaIntroduccion16Numeros();
+        YearMonth fechaUsuario = compruebaIntroduccionFechaCaducidad();
+        cvv = compruebaIntroduccionCvv();
+        System.out.println(codigo + "-" + fechaUsuario + "-" + cvv);
+        TarjetaDeCreditoV2 introducida = new TarjetaDeCreditoV2(codigo, fechaUsuario, cvv);
+        return introducida;
+    }
+
+    private static String compruebaIntroduccion16Numeros() {
         String codigo = null;
         double codigoComprobacion;
-        String fechaCaducidad;
-        String cvvString;
-        int cvv = 0;
         boolean comprobarIntroduccionIncorrectaUsuario = false;
-        boolean formatoFechaCaducidadCorrecto = false;
-        //Bucle control de introduccion correcta de valores
-
         do {
             comprobarIntroduccionIncorrectaUsuario = false;
             try {
@@ -112,22 +117,37 @@ public class Utilidades {
                 comprobarIntroduccionIncorrectaUsuario = true;
             }
         } while (comprobarIntroduccionIncorrectaUsuario);
-        //     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
 
-        Pattern patron = Pattern.compile("[1-12]{1}\\/[22-50]{1}");
-//        patron.matcher(fechaCaducidad);
-        Matcher mat;
+        return codigo;
+    }
+
+    private static YearMonth compruebaIntroduccionFechaCaducidad() {
+        String fechaCaducidad;
+        int mes = 0, anyo = 0;
+        boolean comprobarIntroduccionIncorrectaUsuario = false;
+        YearMonth fecha;
         do {
             comprobarIntroduccionIncorrectaUsuario = false;
             try {
                 do {
-                    fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
-                    mat = patron.matcher(fechaCaducidad);
-
+                    do {
+                        try {
+                            comprobarIntroduccionIncorrectaUsuario = false;
+                            fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad ejemplo: 10/24");
+                            String[] mesAnyo = fechaCaducidad.split("\\/");
+                            mes = Integer.parseInt(mesAnyo[0]);
+                            anyo = Integer.parseInt(20 + mesAnyo[1]);
+                        } catch (ArrayIndexOutOfBoundsException AIOOFBE) {
+                            //Mensaje de error
+                            JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                                    + "Por favor ingrese un valor valido", "Error de formato",
+                                    JOptionPane.ERROR_MESSAGE);
+                            comprobarIntroduccionIncorrectaUsuario = true;
+                        }
+                    } while (comprobarIntroduccionIncorrectaUsuario);
+                    System.out.println(mes + "/" + anyo);
                     comprobarIntroduccionIncorrectaUsuario = false;
-                    //mat.matches()
-
-                } while (mat.matches());
+                } while (mes < 1 || mes > 12 || anyo < 2022 || anyo > 2050);
             } catch (NumberFormatException ex) {
                 //Mensaje de error
                 JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
@@ -136,8 +156,14 @@ public class Utilidades {
                 comprobarIntroduccionIncorrectaUsuario = true;
             }
         } while (comprobarIntroduccionIncorrectaUsuario);
+        fecha = YearMonth.of(anyo, mes);
+        return fecha;
+    }
 
-        //   cvvString = JOptionPane.showInputDialog("Introduce el cvv");
+    private static int compruebaIntroduccionCvv() {
+        String cvvString;
+        int cvv = 0;
+        boolean comprobarIntroduccionIncorrectaUsuario = false;
         do {
             comprobarIntroduccionIncorrectaUsuario = false;
             try {
@@ -154,11 +180,7 @@ public class Utilidades {
                 comprobarIntroduccionIncorrectaUsuario = true;
             }
         } while (comprobarIntroduccionIncorrectaUsuario);
-        YearMonth prueba;
-        prueba = YearMonth.now().plusYears(3);
-        // cvv = Integer.parseInt(cvvString);
-        TarjetaDeCredito introducida = new TarjetaDeCredito(codigo, prueba, cvv);
-        return introducida;
+        return cvv;
     }
 
 //    public static void leerProductos(Bandeja[] bandeja) {
