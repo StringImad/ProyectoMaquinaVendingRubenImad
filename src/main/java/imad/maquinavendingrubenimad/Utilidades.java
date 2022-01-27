@@ -106,7 +106,6 @@ public class Utilidades {
         } while (comprobarIntroduccionIncorrectaUsuario);
         //     codigo = JOptionPane.showInputDialog("Introduce un codigo de 16 numeros");
 
-        fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad");
         Pattern patron = Pattern.compile("[1-12]{1}\\/[22-50]{1}");
 //        patron.matcher(fechaCaducidad);
         Matcher mat;
