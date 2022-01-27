@@ -60,7 +60,7 @@ public class Bandeja {
 
     @Override
     public String toString() {
-        return "Productos: " + getTipoDeProducto() + " Su código es: " +getCodigoProducto() + " Precio:  " +getPrecioProducto() + "€" + "\n";
+        return "Producto: " + getTipoDeProducto() + ", Código: " +getCodigoProducto() +"\n";
     }
 
 }
