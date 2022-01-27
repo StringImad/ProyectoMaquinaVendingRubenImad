@@ -40,13 +40,12 @@ public class Programa {
         
         
        
-        codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\nIntroduce un codigo");
-
+        codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
         if (codigo.contentEquals(codigoGenerado)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al menu de administracion.");
-
+            
         } else {
-            Utilidades.leerProductos(bandejas);
+           // Utilidades.leerProductos(bandejas);
             codigoProductoElegidoString = JOptionPane.showInputDialog(null, "¿Que producto desea?");
             codigoProductoElegidoInt = Integer.parseInt(codigoProductoElegidoString);
             switch (codigoProductoElegidoInt) {
