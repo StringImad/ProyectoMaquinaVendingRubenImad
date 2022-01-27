@@ -33,10 +33,10 @@ public class Programa {
 //        bandejas[4] = new Bandeja("Kinder Bueno", 5, 250, 15);
 //        bandejas[5] = new Bandeja("Bocadillo", 6, 500, 15);
 //        
-        TarjetaDeCredito []tarjetas = new TarjetaDeCredito[3];
-        tarjetas[0] = new TarjetaDeCredito("",YearMonth.of(2023, 3),2);
-        tarjetas[1] = new TarjetaDeCredito("",YearMonth.of(2021, 6),2);
-        tarjetas[2] = new TarjetaDeCredito("",YearMonth.of(2022, 1),2);
+//        TarjetaDeCredito []tarjetas = new TarjetaDeCredito[3];
+//        tarjetas[0] = new TarjetaDeCredito("",YearMonth.of(2023, 3),2);
+//        tarjetas[1] = new TarjetaDeCredito("",YearMonth.of(2021, 6),2);
+//        tarjetas[2] = new TarjetaDeCredito("",YearMonth.of(2022, 1),2);
         
         
        
