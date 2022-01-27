@@ -23,6 +23,9 @@ public class Bandeja {
         this.stockBandeja = stockBandeja;
     }
 
+    public Bandeja() {
+    }
+
     public String getTipoDeProducto() {
         return tipoDeProducto;
     }
