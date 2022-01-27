@@ -52,11 +52,11 @@ public class Utilidades {
         return pswd;
     }
 
-    public static String formaPagoEfectivoTarjeta() {
-        String formaDePago = "";
+    public static boolean formaPagoEfectivoTarjeta() {
+        boolean formaDePago = false;
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
-                TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
-
+        TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
+        TarjetaDeCredito tarjetaUsuario = validacionTarjetaIntroducida();
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
                 "Bienvenido al sistema de cobro",
@@ -70,7 +70,13 @@ public class Utilidades {
                 break;
             case 1:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta");
-                validacionTarjetaIntroducida();
+                if (TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta)) {
+                    JOptionPane.showMessageDialog(null, "Compra realizada con exito");
+                    formaDePago = true;
+                } else {
+                    formaDePago = false;
+                    JOptionPane.showMessageDialog(null, "Tarjeta no valida, Se cancela la operacion", "Error de compra",JOptionPane.ERROR_MESSAGE);
+                }
                 break;
             case 2:
                 JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
@@ -166,5 +172,4 @@ public class Utilidades {
 //        );
 //
 //    }
-
 }
