@@ -55,6 +55,8 @@ public class Utilidades {
     public static String formaPagoEfectivoTarjeta() {
         String formaDePago = "";
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
+                TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
+
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
                 "Bienvenido al sistema de cobro",
