@@ -30,9 +30,8 @@ public class TarjetaDeCredito {
         YearMonth ahora = YearMonth.now();
         return fecha.isAfter(ahora);
     }
-    public boolean CompararTarjetas(TarjetaDeCredito t1) {
-
-        return t1.cvv == this.cvv && t1.numero == this.numero && t1.fechaVencimiento == this.fechaVencimiento;
+    public static boolean CompararTarjetas(TarjetaDeCredito t1,TarjetaDeCredito t2) {
+        return t1.getNumero().equals(t2.getNumero())&& t1.getFechaVencimiento().equals(t2.getFechaVencimiento())&&t1.getCvv()==t2.getCvv();
     }
 
     public String getNumero() {
