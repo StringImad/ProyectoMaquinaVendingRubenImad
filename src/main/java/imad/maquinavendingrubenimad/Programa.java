@@ -23,7 +23,7 @@ public class Programa {
         String efectivo;
         String codigoProductoElegidoString;
         int codigoProductoElegidoInt;
-                ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
+        ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
 
 //        Bandeja[] bandejas = new Bandeja[6];
 //        bandejas[0] = new Bandeja("Agua", 1, 100, 15);
@@ -37,24 +37,33 @@ public class Programa {
 //        tarjetas[0] = new TarjetaDeCredito("",YearMonth.of(2023, 3),2);
 //        tarjetas[1] = new TarjetaDeCredito("",YearMonth.of(2021, 6),2);
 //        tarjetas[2] = new TarjetaDeCredito("",YearMonth.of(2022, 1),2);
-        
-        
-       
         codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
         if (codigo.contentEquals(codigoGenerado)) {
             JOptionPane.showMessageDialog(null, "Bienvenido al menu de administracion.");
-            
+
         } else {
-           // Utilidades.leerProductos(bandejas);
-            codigoProductoElegidoString = JOptionPane.showInputDialog(null, "¿Que producto desea?");
-            codigoProductoElegidoInt = Integer.parseInt(codigoProductoElegidoString);
-            switch (codigoProductoElegidoInt) {
+            //  UtilidadesV2.leerProductos(bandejas);
+//            codigoProductoElegidoString = JOptionPane.showInputDialog(null,listaBandejas+ "¿Que producto desea?");
+//            codigoProductoElegidoInt = Integer.parseInt(codigoProductoElegidoString);
+            switch (Integer.parseInt(codigo)) {
                 case 1:
-//                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[0].getCodigoProducto() + "€.");
-                    
-                    
-                        Utilidades.formaPagoEfectivoTarjeta();
-                  // tarjetas[0].equals(Utilidades.formaPagoEfectivoTarjeta());
+                    for (Bandeja listaBandeja : listaBandejas) {
+                        if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
+                            JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getCodigoProducto() + "€.");
+
+                        }
+
+                    }
+                    if (Utilidades.formaPagoEfectivoTarjeta()) {
+                        for (Bandeja listaBandeja : listaBandejas) {
+                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
+                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getCodigoProducto() + "€.");
+                                listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
+                            }
+
+                        }
+                    }
+                    // tarjetas[0].equals(Utilidades.formaPagoEfectivoTarjeta());
                     break;
                 case 2:
 //                    JOptionPane.showMessageDialog(null, "El precio es " + bandejas[1].getCodigoProducto() + "€.");
