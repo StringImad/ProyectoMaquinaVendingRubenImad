@@ -57,6 +57,18 @@ public class Utilidades {
         ArrayList<Bandeja> listaBandejas = lista;
         TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
         boolean formaDePago = false;
+        double precioProducto = 0;
+        for (Bandeja listaBandeja : listaBandejas) {
+
+            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
+                precioProducto = listaBandeja.getPrecioProducto();
+
+            }
+        }
+
+        System.out.println("Precio producto: " + precioProducto);
+        double dineroIntroducido = 0;
+        boolean dineroSuficiente = true;
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
@@ -67,22 +79,73 @@ public class Utilidades {
         switch (ventana) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
-                String[] botonesDinero = {"5cts", "10cts", "20cts", "50cts", "1€", "2€", "5€", "10€", "20€", "salir"};
+                do {
+                    String[] botonesDinero = {"5cts", "10cts", "20cts", "50cts", "1€", "2€", "5€", "10€", "20€", "salir"};
 
-                int ventanaDinero = JOptionPane.showOptionDialog(null,
-                        "Elige el modo de pago:",
-                        "Bienvenido al sistema de cobro",
-                        JOptionPane.INFORMATION_MESSAGE,
-                        JOptionPane.QUESTION_MESSAGE, null,
-                        botones, botones[0]);
+                    int ventanaDinero = JOptionPane.showOptionDialog(null,
+                            "Introduce el dinero:",
+                            "Bienvenido al sistema de cobro",
+                            JOptionPane.INFORMATION_MESSAGE,
+                            JOptionPane.QUESTION_MESSAGE, null,
+                            botonesDinero, botonesDinero[0]);
+
+                    switch (ventanaDinero) {
+                        case 0:
+                            dineroIntroducido += 5;
+                            break;
+                        case 1:
+                            dineroIntroducido += 10;
+                            System.out.println("Diner introdudido: " + dineroIntroducido);
+
+                            break;
+                        case 2:
+                            dineroIntroducido += 20;
+
+                            break;
+                        case 3:
+                            dineroIntroducido += 50;
+                            System.out.println("Diner introdudido: " + dineroIntroducido);
+
+                            break;
+                        case 4:
+                            dineroIntroducido += 100;
+
+                            break;
+                        case 5:
+                            dineroIntroducido += 200;
+
+                            break;
+                        case 6:
+                            dineroIntroducido += 500;
+
+                            break;
+                        case 7:
+                            dineroIntroducido += 1000;
+
+                            break;
+                        case 8:
+                            dineroIntroducido += 2000;
+
+                            break;
+                        case 9:
+                            JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
+                            dineroSuficiente = false;
+                            break;
+                    }
+
+                    if (dineroIntroducido >= precioProducto) {
+                        dineroSuficiente = false;
+
+                    }
+                } while ((dineroSuficiente));
                 for (Bandeja listaBandeja : listaBandejas) {
 
                     if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                            listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
+                        listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
 
-                        }
                     }
-                
+                }
+                System.out.println("Diner introdudido: " + dineroIntroducido);
                 break;
             case 1:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta");
