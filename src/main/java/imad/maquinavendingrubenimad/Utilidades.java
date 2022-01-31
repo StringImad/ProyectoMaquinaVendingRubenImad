@@ -7,6 +7,7 @@ package imad.maquinavendingrubenimad;
 
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -52,7 +53,8 @@ public class Utilidades {
         return pswd;
     }
 
-    public static boolean formaPagoEfectivoTarjeta() {
+    public static boolean formaPagoEfectivoTarjeta(String codigo, ArrayList lista) {
+        ArrayList<Bandeja> listaBandejas = lista;
         TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
         boolean formaDePago = false;
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
@@ -65,6 +67,22 @@ public class Utilidades {
         switch (ventana) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
+                String[] botonesDinero = {"5cts", "10cts", "20cts", "50cts", "1€", "2€", "5€", "10€", "20€", "salir"};
+
+                int ventanaDinero = JOptionPane.showOptionDialog(null,
+                        "Elige el modo de pago:",
+                        "Bienvenido al sistema de cobro",
+                        JOptionPane.INFORMATION_MESSAGE,
+                        JOptionPane.QUESTION_MESSAGE, null,
+                        botones, botones[0]);
+                for (Bandeja listaBandeja : listaBandejas) {
+
+                    if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
+                            listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
+
+                        }
+                    }
+                
                 break;
             case 1:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago con tarjeta\nIntroduce la tarjeta");
@@ -76,7 +94,7 @@ public class Utilidades {
                     formaDePago = true;
                 } else {
                     formaDePago = false;
-                    JOptionPane.showMessageDialog(null, "Tarjeta no valida", "Error de compra",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Tarjeta no valida", "Error de compra", JOptionPane.ERROR_MESSAGE);
                 }
 
                 break;
@@ -89,7 +107,7 @@ public class Utilidades {
 
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
         String codigo;
-        int cvv = 0;   
+        int cvv = 0;
         codigo = compruebaIntroduccion16Numeros();
         YearMonth fechaUsuario = compruebaIntroduccionFechaCaducidad();
         cvv = compruebaIntroduccionCvv();

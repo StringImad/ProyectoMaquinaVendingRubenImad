@@ -34,7 +34,7 @@ public class Programa {
                         "Consultar y cambiar el producto",
                         "Consultar y cambiar el stock",
                         "Consultar el efectivo",
-                        "Recargar efectivo", "Consultar dinero recaudado", "Apagar","salir"};
+                        "Recargar efectivo", "Consultar dinero recaudado", "Apagar", "salir"};
                     int ventana = JOptionPane.showOptionDialog(null,
                             "Elige la opcion que desea:",
                             "Bienvenido al menu de administracion",
@@ -117,108 +117,34 @@ public class Programa {
                         for (Bandeja listaBandeja : listaBandejas) {
                             if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
                                 JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
+                                if (Utilidades.formaPagoEfectivoTarjeta((codigo),listaBandejas)) {
 
-                            }
-
-                        }
-                        if (Utilidades.formaPagoEfectivoTarjeta()) {
-                            for (Bandeja listaBandeja : listaBandejas) {
-                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
                                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-                                }
 
+                                }
                             }
+
                         }
+
                         break;
                     case 2:
-                        for (Bandeja listaBandeja : listaBandejas) {
-                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
-
-                            }
-
-                        }
-                        if (Utilidades.formaPagoEfectivoTarjeta()) {
-                            for (Bandeja listaBandeja : listaBandejas) {
-                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-                                }
-
-                            }
-                        }
+                
                         break;
 
                     case 3:
-                        for (Bandeja listaBandeja : listaBandejas) {
-                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
-
-                            }
-
-                        }
-                        if (Utilidades.formaPagoEfectivoTarjeta()) {
-                            for (Bandeja listaBandeja : listaBandejas) {
-                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-                                }
-
-                            }
-                        }
+      
                         break;
 
                     case 4:
-                        for (Bandeja listaBandeja : listaBandejas) {
-                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
-
-                            }
-
-                        }
-                        if (Utilidades.formaPagoEfectivoTarjeta()) {
-                            for (Bandeja listaBandeja : listaBandejas) {
-                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-                                }
-
-                            }
-                        }
-                        Utilidades.formaPagoEfectivoTarjeta();
+              
                         break;
 
                     case 5:
-                        for (Bandeja listaBandeja : listaBandejas) {
-                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
-
-                            }
-
-                        }
-                        if (Utilidades.formaPagoEfectivoTarjeta()) {
-                            for (Bandeja listaBandeja : listaBandejas) {
-                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-                                }
-
-                            }
-                        }
+                  
                         break;
 
                     case 6:
-                        for (Bandeja listaBandeja : listaBandejas) {
-                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
-
-                            }
-
-                        }
-                        if (Utilidades.formaPagoEfectivoTarjeta()) {
-                            for (Bandeja listaBandeja : listaBandejas) {
-                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-                                }
-
-                            }
-                        }
+                      
                         break;
                 }
             }
