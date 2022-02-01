@@ -43,7 +43,7 @@ public class Bandeja {
     }
 
     public double getPrecioProducto() {
-        return (precioProducto/100);
+        return precioProducto;
     }
 
     public void setPrecioProducto(int precioProducto) {

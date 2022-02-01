@@ -116,7 +116,7 @@ public class Programa {
                     case 1:
                         for (Bandeja listaBandeja : listaBandejas) {
                             if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + listaBandeja.getPrecioProducto() + "€.");
+                                JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto())/100 + "€.");
                                 if (Utilidades.formaPagoEfectivoTarjeta((codigo),listaBandejas)) {
 
                                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
