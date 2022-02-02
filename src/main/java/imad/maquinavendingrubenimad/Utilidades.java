@@ -266,6 +266,90 @@ public class Utilidades {
         return cvv;
     }
 
+    public static void cambiarCantidad() {
+        Dinero d5 = new Dinero(5, 10);
+        Dinero d10 = new Dinero(5, 10);
+        Dinero d20 = new Dinero(5, 10);
+        Dinero d50 = new Dinero(5, 10);
+        Dinero d100 = new Dinero(5, 7);
+        Dinero d200 = new Dinero(5, 5);
+        Dinero d500 = new Dinero(5, 3);
+        Dinero d1000 = new Dinero(5, 2);
+        String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
+                + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
+        int moneda = Integer.parseInt(monedaString);
+        switch (moneda) {
+
+            case 5:
+                String stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                int cantidad = Integer.parseInt(stringCantidad);
+                d5.setCantidad(moneda);
+                break;
+            case 10:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d10.setCantidad(moneda);
+                break;
+            case 20:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d20.setCantidad(moneda);
+                break;
+            case 50:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d50.setCantidad(moneda);
+                break;
+            case 100:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d100.setCantidad(moneda);
+                break;
+            case 200:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d200.setCantidad(moneda);
+                break;
+            case 500:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d500.setCantidad(moneda);
+                break;
+            case 1000:
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
+                cantidad = Integer.parseInt(stringCantidad);
+                d1000.setCantidad(moneda);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Cantidad no valida");
+        }
+    }
+    
+//    public static void consultarEfectivo(){
+//        Dinero d5 = new Dinero(5, 10);
+//        Dinero d10 = new Dinero(5, 10);
+//        Dinero d20 = new Dinero(5, 10);
+//        Dinero d50 = new Dinero(5, 10);
+//        Dinero d100 = new Dinero(5, 7);
+//        Dinero d200 = new Dinero(5, 5);
+//        Dinero d500 = new Dinero(5, 3);
+//        Dinero d1000 = new Dinero(5, 2);
+//        int cantidad = 0;
+//        MaquinaVending m2 = new MaquinaVending();
+//        cantidad += d5.getValor()*d5.getCantidad();
+//        cantidad += d10.getValor()*d10.getCantidad();
+//        cantidad += d20.getValor()*d20.getCantidad();
+//        cantidad += d50.getValor()*d50.getCantidad();
+//        cantidad += d100.getValor()*d100.getCantidad();
+//        cantidad += d200.getValor()*d200.getCantidad();
+//        cantidad += d500.getValor()*d500.getCantidad();
+//        cantidad += d1000.getValor()*d1000.getCantidad();
+//        
+//        m2.setDeposito(cantidad);
+//        
+//        JOptionPane.showMessageDialog(null, m2.getDeposito());
+//    }
+
 //    public static void leerProductos(Bandeja[] bandeja) {
 //
 //        JOptionPane.showMessageDialog(null, "El productos es " + bandeja[0].getTipoDeProducto() + " y su código es " + bandeja[0].getCodigoProducto() + " y cuesta " + bandeja[1].getPrecioProducto() + "€" + "\n"

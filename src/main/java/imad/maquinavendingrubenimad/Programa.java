@@ -24,7 +24,8 @@ public class Programa {
         ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
         boolean repetir = true;
         boolean repetirMenuAdmin = true;
-
+        MaquinaVending m1 = new MaquinaVending();
+        
         do {
             codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
             if (codigo.contentEquals(codigoGenerado)) {
@@ -70,7 +71,11 @@ public class Programa {
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
 
+                                case 3:
+                                    JOptionPane.showMessageDialog(null, "El efectivo de la máquina es: " + m1.getDeposito() + "€");
+
                             }
+
                             break;
                         case 1:
                             int ventanaProducto = JOptionPane.showOptionDialog(null,
@@ -97,8 +102,9 @@ public class Programa {
                                     botones, botones[0]);
                             break;
                         case 4:
-                            break;
+                            Utilidades.cambiarCantidad();
                         case 5:
+                            
                             break;
                         case 6:
                             break;
