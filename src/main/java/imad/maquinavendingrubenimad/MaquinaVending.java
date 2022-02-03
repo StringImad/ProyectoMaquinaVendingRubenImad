@@ -20,6 +20,13 @@ public class MaquinaVending {
     private final String psw;
     private LocalDate fecha;
 
+    public MaquinaVending() {
+        this.id = UUID.randomUUID();
+        this.psw = Utilidades.getPassword();
+    }
+    
+    
+    
     public MaquinaVending(int deposito, String ubicacion, LocalDate fecha) {
         this.deposito = deposito;
         this.ubicacion = ubicacion;

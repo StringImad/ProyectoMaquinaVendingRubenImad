@@ -56,9 +56,6 @@ public class Dinero {
         return valor;
     }
 
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
 
     public int getCantidad() {
         return cantidad;

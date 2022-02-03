@@ -8,6 +8,7 @@ package imad.maquinavendingrubenimad;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -323,6 +324,61 @@ public class Utilidades {
             default:
                 JOptionPane.showMessageDialog(null, "Cantidad no valida");
         }
+    }
+    
+    public static String darCambio(Dinero d5, Dinero d10,Dinero d20,Dinero d50,Dinero d100, Dinero d200, Dinero d500, Dinero d1000,int precio,int dineroPagado){
+        String StringFinal = "";
+        String dialogo = "";
+        int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0;
+
+        if (precio < dineroPagado) {
+            dineroPagado -= precio;
+            if (d1000.getCantidad() == 0 || dineroPagado >= d1000.getValor()) {
+                dineroPagado -= d1000.getValor();
+                d1000.setCantidad(-1);
+                cont1000++;
+            }
+            if (d500.getCantidad() == 0 || dineroPagado >= d500.getValor()) {
+                dineroPagado -= d500.getValor();
+                d500.setCantidad(-1);
+                cont500++;
+            }
+            if (d200.getCantidad() == 0 || dineroPagado >= d200.getValor()) {
+                dineroPagado -= d200.getValor();
+                d200.setCantidad(-1);
+                cont200++;
+            }
+            if (d100.getCantidad() == 0 || dineroPagado >= d100.getValor()) {
+                dineroPagado -= d100.getValor();
+                d100.setCantidad(-1);
+                cont100++;
+            }
+            if (d50.getCantidad() == 0 || dineroPagado >= d50.getValor()) {
+                dineroPagado -= d50.getValor();
+                d50.setCantidad(-1);
+                cont50++;
+            }
+            if (d20.getCantidad() == 0 || dineroPagado >= d20.getValor()) {
+                dineroPagado -= d20.getValor();
+                d20.setCantidad(-1);
+                cont20++;
+            }
+            if (d10.getCantidad() == 0 || dineroPagado >= d10.getValor()) {
+                dineroPagado -= d10.getValor();
+                d10.setCantidad(-1);
+                cont10++;
+            }
+            if (d5.getCantidad() == 0 || dineroPagado >= d5.getValor()) {
+                dineroPagado -= d5.getValor();
+                d5.setCantidad(-1);
+                cont5++;
+            }
+        } else if (precio == dineroPagado) {
+            return dialogo = "El dinero es el necesario";
+        } else {
+            return dialogo = "El dinero no es el necesario";
+        }
+        return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20:" + cont20 + "| 0,10:" + cont10 + "| 0,05:" + cont5;
     }
     
 //    public static void consultarEfectivo(){
