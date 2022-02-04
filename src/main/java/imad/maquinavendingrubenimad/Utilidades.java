@@ -326,7 +326,7 @@ public class Utilidades {
         }
     }
     
-    public static String darCambio(Dinero d5, Dinero d10,Dinero d20,Dinero d50,Dinero d100, Dinero d200, Dinero d500, Dinero d1000,int precio,int dineroPagado){
+    public static String darCambio(Dinero d5, Dinero d10,Dinero d20,Dinero d50,Dinero d100, Dinero d200, Dinero d500, Dinero d1000,int precio, int dineroPagado) {
         String StringFinal = "";
         String dialogo = "";
         int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0;
@@ -335,42 +335,42 @@ public class Utilidades {
             dineroPagado -= precio;
             if (d1000.getCantidad() == 0 || dineroPagado >= d1000.getValor()) {
                 dineroPagado -= d1000.getValor();
-                d1000.setCantidad(-1);
+                d1000.setCantidad(d1000.getCantidad()-1);
                 cont1000++;
             }
             if (d500.getCantidad() == 0 || dineroPagado >= d500.getValor()) {
                 dineroPagado -= d500.getValor();
-                d500.setCantidad(-1);
+                d500.setCantidad(d500.getCantidad()-1);
                 cont500++;
             }
             if (d200.getCantidad() == 0 || dineroPagado >= d200.getValor()) {
                 dineroPagado -= d200.getValor();
-                d200.setCantidad(-1);
+                d200.setCantidad(d200.getCantidad()-1);
                 cont200++;
             }
             if (d100.getCantidad() == 0 || dineroPagado >= d100.getValor()) {
                 dineroPagado -= d100.getValor();
-                d100.setCantidad(-1);
+                d100.setCantidad(d100.getCantidad()-1);
                 cont100++;
             }
             if (d50.getCantidad() == 0 || dineroPagado >= d50.getValor()) {
                 dineroPagado -= d50.getValor();
-                d50.setCantidad(-1);
+                d50.setCantidad(d50.getCantidad()-1);
                 cont50++;
             }
             if (d20.getCantidad() == 0 || dineroPagado >= d20.getValor()) {
                 dineroPagado -= d20.getValor();
-                d20.setCantidad(-1);
+                d20.setCantidad(d20.getCantidad()-1);
                 cont20++;
             }
             if (d10.getCantidad() == 0 || dineroPagado >= d10.getValor()) {
                 dineroPagado -= d10.getValor();
-                d10.setCantidad(-1);
+                d10.setCantidad(d10.getCantidad()-1);
                 cont10++;
             }
             if (d5.getCantidad() == 0 || dineroPagado >= d5.getValor()) {
                 dineroPagado -= d5.getValor();
-                d5.setCantidad(-1);
+                d5.setCantidad(d5.getCantidad()-1);
                 cont5++;
             }
         } else if (precio == dineroPagado) {
