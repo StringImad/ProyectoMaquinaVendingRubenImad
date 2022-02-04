@@ -149,6 +149,9 @@ public class Programa {
 
                                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
 
+                                }else{
+                                JOptionPane.showMessageDialog(null, "La compra no se ha realizado");
+
                                 }
                             }
 
