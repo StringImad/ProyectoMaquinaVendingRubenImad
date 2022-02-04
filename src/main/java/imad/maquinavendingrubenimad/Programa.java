@@ -19,7 +19,7 @@ public class Programa {
 
     public static void main(String[] args) {
         //Declaracion de variables
-        String codigo;
+        String codigo = "";
         //Guardamos en este string el codigo aleatorio generado para se le codigo de administrador
         String codigoGenerado = Utilidades.getPassword();
         //Se imprime el codigo para que sea mas facil de introdcuir
@@ -29,9 +29,28 @@ public class Programa {
         boolean repetir = true;
         boolean repetirMenuAdmin = true;
         MaquinaVending m1 = new MaquinaVending();
-
+        boolean comprobarIntroduccionIncorrectaUsuario = true;
+        int codigoSwitch = 0;
         do {
-            codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo"); 
+
+            do {
+                codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
+
+                try {
+                    if(codigo.equals(codigoGenerado)){
+                        break;
+                    }
+                    codigoSwitch = Integer.parseInt(codigo);
+                     comprobarIntroduccionIncorrectaUsuario = false;
+                } catch (NumberFormatException NFE) {
+                    //Mensaje de error
+                    JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                            + "Por favor ingrese un valor valido", "Error de formato",
+                            JOptionPane.ERROR_MESSAGE);
+                    comprobarIntroduccionIncorrectaUsuario = true;
+                }
+            } while (comprobarIntroduccionIncorrectaUsuario);
+            System.out.println("-------Erroe 1");
             if (codigo.contentEquals(codigoGenerado)) {
                 do {
                     repetirMenuAdmin = true;
@@ -121,7 +140,7 @@ public class Programa {
                     }
                 } while (repetirMenuAdmin);
             } else {
-                switch (Integer.parseInt(codigo)) {
+                switch ((codigoSwitch)) {
                     case 1:
                         for (Bandeja listaBandeja : listaBandejas) {
                             if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
