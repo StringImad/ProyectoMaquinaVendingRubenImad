@@ -267,15 +267,8 @@ public class Utilidades {
         return cvv;
     }
 
-    public static void cambiarCantidad() {
-        Dinero d5 = new Dinero(5, 10);
-        Dinero d10 = new Dinero(5, 10);
-        Dinero d20 = new Dinero(5, 10);
-        Dinero d50 = new Dinero(5, 10);
-        Dinero d100 = new Dinero(5, 7);
-        Dinero d200 = new Dinero(5, 5);
-        Dinero d500 = new Dinero(5, 3);
-        Dinero d1000 = new Dinero(5, 2);
+    public static void cambiarCantidad(Dinero d5, Dinero d10,Dinero d20,Dinero d50,Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
+
         String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
                 + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
         int moneda = Integer.parseInt(monedaString);

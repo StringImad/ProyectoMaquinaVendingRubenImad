@@ -31,6 +31,14 @@ public class Programa {
         MaquinaVending m1 = new MaquinaVending();
         boolean comprobarIntroduccionIncorrectaUsuario = true;
         int codigoSwitch = 0;
+        Dinero d5 = new Dinero(5, 10);
+        Dinero d10 = new Dinero(5, 10);
+        Dinero d20 = new Dinero(5, 10);
+        Dinero d50 = new Dinero(5, 10);
+        Dinero d100 = new Dinero(5, 7);
+        Dinero d200 = new Dinero(5, 5);
+        Dinero d500 = new Dinero(5, 3);
+        Dinero d1000 = new Dinero(5, 2);
         do {
 
             do {
@@ -123,7 +131,7 @@ public class Programa {
                                     botones, botones[0]);
                             break;
                         case 4:
-                            Utilidades.cambiarCantidad();
+                            Utilidades.cambiarCantidad(d5,d10,d20,d50,d100,d200,d500,d1000);
                         case 5:
 
                             break;
