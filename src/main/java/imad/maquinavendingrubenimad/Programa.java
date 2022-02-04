@@ -20,16 +20,21 @@ public class Programa {
     public static void main(String[] args) {
         //Declaracion de variables
         String codigo;
+        //Guardamos en este string el codigo aleatorio generado para se le codigo de administrador
         String codigoGenerado = Utilidades.getPassword();
+        //Se imprime el codigo para que sea mas facil de introdcuir
+        System.out.println(codigoGenerado);
+        //Creamos un arrayList de bandejas apartir de un fichero csv
         ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
         boolean repetir = true;
         boolean repetirMenuAdmin = true;
         MaquinaVending m1 = new MaquinaVending();
-        
+
         do {
-            codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
+            codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo"); 
             if (codigo.contentEquals(codigoGenerado)) {
                 do {
+                    repetirMenuAdmin = true;
                     String[] botones = {
                         "Consultar y cambiar código",
                         "Consultar y cambiar el producto",
@@ -56,17 +61,14 @@ public class Programa {
                             switch (ventanaCodigo) {
                                 case 0:
                                     JOptionPane.showMessageDialog(null, listaBandejas);
-
                                     break;
                                 case 1:
                                     String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
-
                                     for (Bandeja listaBandeja : listaBandejas) {
                                         if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
                                             codigoNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el codigo nuevo");
                                             listaBandeja.setCodigoProducto(Integer.parseInt(codigoNuevo));
                                         }
-
                                     }
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
@@ -104,17 +106,18 @@ public class Programa {
                         case 4:
                             Utilidades.cambiarCantidad();
                         case 5:
-                            
+
                             break;
                         case 6:
-                            break;
-                        case 7:
+                            repetirMenuAdmin = false;
                             repetir = false;
                             JOptionPane.showMessageDialog(null, "Apagando la maquina");
                             break;
-                        case 8:
+                        case 7:
                             repetirMenuAdmin = false;
+
                             break;
+
                     }
                 } while (repetirMenuAdmin);
             } else {
@@ -122,8 +125,8 @@ public class Programa {
                     case 1:
                         for (Bandeja listaBandeja : listaBandejas) {
                             if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto())/100 + "€.");
-                                if (Utilidades.formaPagoEfectivoTarjeta((codigo),listaBandejas)) {
+                                JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto()) / 100 + "€.");
+                                if (Utilidades.formaPagoEfectivoTarjeta((codigo), listaBandejas)) {
 
                                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
 
@@ -134,23 +137,23 @@ public class Programa {
 
                         break;
                     case 2:
-                
+
                         break;
 
                     case 3:
-      
+
                         break;
 
                     case 4:
-              
+
                         break;
 
                     case 5:
-                  
+
                         break;
 
                     case 6:
-                      
+
                         break;
                 }
             }
