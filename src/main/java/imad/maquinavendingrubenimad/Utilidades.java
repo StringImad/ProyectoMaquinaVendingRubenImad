@@ -70,6 +70,14 @@ public class Utilidades {
         System.out.println("Precio producto: " + precioProducto);
         double dineroIntroducido = 0;
         boolean dineroSuficiente = true;
+        Dinero d5 = new Dinero(5, 10);
+        Dinero d10 = new Dinero(10, 10);
+        Dinero d20 = new Dinero(20, 10);
+        Dinero d50 = new Dinero(50, 10);
+        Dinero d100 = new Dinero(100, 7);
+        Dinero d200 = new Dinero(200, 5);
+        Dinero d500 = new Dinero(500, 3);
+        Dinero d1000 = new Dinero(1000, 2);
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
@@ -77,6 +85,7 @@ public class Utilidades {
                 JOptionPane.INFORMATION_MESSAGE,
                 JOptionPane.QUESTION_MESSAGE, null,
                 botones, botones[0]);
+
         switch (ventana) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
@@ -137,6 +146,7 @@ public class Utilidades {
                     if (dineroIntroducido >= precioProducto) {
                         dineroSuficiente = false;
                         formaDePago = true;
+                        System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
                     }
                 } while ((dineroSuficiente));
 //                for (Bandeja listaBandeja : listaBandejas) {
@@ -267,7 +277,7 @@ public class Utilidades {
         return cvv;
     }
 
-    public static void cambiarCantidad(Dinero d5, Dinero d10,Dinero d20,Dinero d50,Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
+    public static void cambiarCantidad(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
 
         String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
                 + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
@@ -344,54 +354,51 @@ public class Utilidades {
 
             do {
                 if (dineroPagado >= d200.getValor()) {
-                dineroPagado -= d200.getValor();
-                d200.setCantidad(d200.getCantidad() - 1);
-                cont200++;
+                    dineroPagado -= d200.getValor();
+                    d200.setCantidad(d200.getCantidad() - 1);
+                    cont200++;
                 }
             } while (d200.getCantidad() == 0 || dineroPagado >= d200.getValor());
             do {
                 if (dineroPagado >= d100.getValor()) {
-                dineroPagado -= d100.getValor();
-                d100.setCantidad(d100.getCantidad() - 1);
-                cont100++;
+                    dineroPagado -= d100.getValor();
+                    d100.setCantidad(d100.getCantidad() - 1);
+                    cont100++;
                 }
             } while (d100.getCantidad() == 0 || dineroPagado >= d100.getValor());
             do {
                 if (dineroPagado >= d50.getValor()) {
-                dineroPagado -= d50.getValor();
-                d50.setCantidad(d50.getCantidad() - 1);
-                cont50++;
+                    dineroPagado -= d50.getValor();
+                    d50.setCantidad(d50.getCantidad() - 1);
+                    cont50++;
                 }
             } while (d50.getCantidad() == 0 || dineroPagado >= d50.getValor());
             do {
                 if (dineroPagado >= d20.getValor()) {
-                dineroPagado -= d20.getValor();
-                d20.setCantidad(d20.getCantidad() - 1);
-                cont20++;
+                    dineroPagado -= d20.getValor();
+                    d20.setCantidad(d20.getCantidad() - 1);
+                    cont20++;
                 }
             } while (d20.getCantidad() == 0 || dineroPagado >= d20.getValor());
             do {
                 if (dineroPagado >= d10.getValor()) {
-                dineroPagado -= d10.getValor();
-                d10.setCantidad(d10.getCantidad() - 1);
-                cont1000++;
+                    dineroPagado -= d10.getValor();
+                    d10.setCantidad(d10.getCantidad() - 1);
+                    cont1000++;
                 }
             } while (d10.getCantidad() == 0 || dineroPagado >= d10.getValor());
             do {
                 if (dineroPagado >= d5.getValor()) {
-                dineroPagado -= d5.getValor();
-                d5.setCantidad(d5.getCantidad() - 1);
-                cont5++;
+                    dineroPagado -= d5.getValor();
+                    d5.setCantidad(d5.getCantidad() - 1);
+                    cont5++;
                 }
             } while (d5.getCantidad() == 0 || dineroPagado >= d5.getValor());
-
-        } else if (precio == dineroPagado) {
-            return dialogo = "El dinero es el necesario";
-        } else {
-            return dialogo = "El dinero no es el necesario";
         }
-        return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20:" + cont20 + "| 0,10:" + cont10 + "| 0,05:" + cont5;
+        return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20€:" + cont20 + "| 0,10€:" + cont10 + "| 0,05€:" + cont5;
+
     }
+}
 
 //    public static void consultarEfectivo(){
 //        Dinero d5 = new Dinero(5, 10);
@@ -428,4 +435,4 @@ public class Utilidades {
 //        );
 //
 //    }
-}
+

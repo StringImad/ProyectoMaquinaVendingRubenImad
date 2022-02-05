@@ -101,7 +101,7 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
 
                                 case 3:
-                                    JOptionPane.showMessageDialog(null, "El efectivo de la máquina es: " + m1.getDeposito() + "€");
+                                    
 
                             }
 
@@ -131,9 +131,10 @@ public class Programa {
                                     botones, botones[0]);
                             break;
                         case 4:
-                            Utilidades.cambiarCantidad(d5,d10,d20,d50,d100,d200,d500,d1000);
+                            
+                            break;
                         case 5:
-
+                            Utilidades.cambiarCantidad(d5,d10,d20,d50,d100,d200,d500,d1000);
                             break;
                         case 6:
                             repetirMenuAdmin = false;
