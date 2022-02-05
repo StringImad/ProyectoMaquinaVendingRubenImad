@@ -323,49 +323,68 @@ public class Utilidades {
         String StringFinal = "";
         String dialogo = "";
         int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0;
-
+        dineroPagado -= precio;
         if (precio < dineroPagado) {
-            dineroPagado -= precio;
-            if (d1000.getCantidad() == 0 || dineroPagado >= d1000.getValor()) {
-                dineroPagado -= d1000.getValor();
-                d1000.setCantidad(d1000.getCantidad() - 1);
-                cont1000++;
-            }
-            if (d500.getCantidad() == 0 || dineroPagado >= d500.getValor()) {
-                dineroPagado -= d500.getValor();
-                d500.setCantidad(d500.getCantidad() - 1);
-                cont500++;
-            }
-            if (d200.getCantidad() == 0 || dineroPagado >= d200.getValor()) {
+            do {
+                if (dineroPagado >= d1000.getValor()) {
+                    dineroPagado -= d1000.getValor();
+                    d1000.setCantidad(d1000.getCantidad() - 1);
+                    cont1000++;
+                }
+
+            } while (d1000.getCantidad() == 0 || dineroPagado >= d1000.getValor());
+            do {
+                if (dineroPagado >= d500.getValor()) {
+                    dineroPagado -= d500.getValor();
+                    d500.setCantidad(d500.getCantidad() - 1);
+                    cont500++;
+                }
+
+            } while (d500.getCantidad() == 0 || dineroPagado >= d500.getValor());
+
+            do {
+                if (dineroPagado >= d200.getValor()) {
                 dineroPagado -= d200.getValor();
                 d200.setCantidad(d200.getCantidad() - 1);
                 cont200++;
-            }
-            if (d100.getCantidad() == 0 || dineroPagado >= d100.getValor()) {
+                }
+            } while (d200.getCantidad() == 0 || dineroPagado >= d200.getValor());
+            do {
+                if (dineroPagado >= d100.getValor()) {
                 dineroPagado -= d100.getValor();
                 d100.setCantidad(d100.getCantidad() - 1);
                 cont100++;
-            }
-            if (d50.getCantidad() == 0 || dineroPagado >= d50.getValor()) {
+                }
+            } while (d100.getCantidad() == 0 || dineroPagado >= d100.getValor());
+            do {
+                if (dineroPagado >= d50.getValor()) {
                 dineroPagado -= d50.getValor();
                 d50.setCantidad(d50.getCantidad() - 1);
                 cont50++;
-            }
-            if (d20.getCantidad() == 0 || dineroPagado >= d20.getValor()) {
+                }
+            } while (d50.getCantidad() == 0 || dineroPagado >= d50.getValor());
+            do {
+                if (dineroPagado >= d20.getValor()) {
                 dineroPagado -= d20.getValor();
                 d20.setCantidad(d20.getCantidad() - 1);
                 cont20++;
-            }
-            if (d10.getCantidad() == 0 || dineroPagado >= d10.getValor()) {
+                }
+            } while (d20.getCantidad() == 0 || dineroPagado >= d20.getValor());
+            do {
+                if (dineroPagado >= d10.getValor()) {
                 dineroPagado -= d10.getValor();
                 d10.setCantidad(d10.getCantidad() - 1);
-                cont10++;
-            }
-            if (d5.getCantidad() == 0 || dineroPagado >= d5.getValor()) {
+                cont1000++;
+                }
+            } while (d10.getCantidad() == 0 || dineroPagado >= d10.getValor());
+            do {
+                if (dineroPagado >= d5.getValor()) {
                 dineroPagado -= d5.getValor();
                 d5.setCantidad(d5.getCantidad() - 1);
                 cont5++;
-            }
+                }
+            } while (d5.getCantidad() == 0 || dineroPagado >= d5.getValor());
+
         } else if (precio == dineroPagado) {
             return dialogo = "El dinero es el necesario";
         } else {
