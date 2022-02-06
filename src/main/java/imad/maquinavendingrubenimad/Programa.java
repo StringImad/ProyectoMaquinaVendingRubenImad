@@ -28,6 +28,7 @@ public class Programa {
         ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
         boolean repetir = true;
         boolean repetirMenuAdmin = true;
+        int dineroRecaudado = 0;
         MaquinaVending m1 = new MaquinaVending();
         boolean comprobarIntroduccionIncorrectaUsuario = true;
         int codigoSwitch = 0;
@@ -68,7 +69,10 @@ public class Programa {
                         "Consultar y cambiar el producto",
                         "Consultar y cambiar el stock",
                         "Consultar el efectivo",
-                        "Recargar efectivo", "Consultar dinero recaudado", "Apagar", "salir"};
+                        "Recargar efectivo",
+                        "Consultar dinero tarjetas",
+                        "Apagar",
+                        "salir"};
                     int ventana = JOptionPane.showOptionDialog(null,
                             "Elige la opcion que desea:",
                             "Bienvenido al menu de administracion",
@@ -193,8 +197,10 @@ public class Programa {
                             Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
                             break;
                         case 5:
-                            Utilidades.consultarEfectivoTotal(d5, d10, d20, d50, d100, d200, d500, d1000, d2000, m1);
-                            JOptionPane.showMessageDialog(null, m1.getDeposito() + "€");
+//                            Utilidades.consultarEfectivoTotal(d5, d10, d20, d50, d100, d200, d500, d1000, d2000, m1);
+//                            JOptionPane.showMessageDialog(null, m1.getDeposito() + "€");
+                            dineroRecaudado = Utilidades.getContadorDineroTarjeta();
+                             JOptionPane.showMessageDialog(null,"Se han recaudado: "+(dineroRecaudado/100)+" €");
                             break;
                         case 6:
                             repetirMenuAdmin = false;
@@ -215,7 +221,7 @@ public class Programa {
                             if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
                                 JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto()) / 100 + "€.");
                                 if (Utilidades.formaPagoEfectivoTarjeta((codigo), listaBandejas)) {
-
+                                    JOptionPane.showMessageDialog(null, "Recoja su producto, gracias por su compra");
                                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
 
                                 } else {

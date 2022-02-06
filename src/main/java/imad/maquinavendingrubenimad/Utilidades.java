@@ -18,6 +18,12 @@ import javax.swing.JOptionPane;
  * @author diabl
  */
 public class Utilidades {
+private static int contadorDineroTarjeta;
+
+    public static int getContadorDineroTarjeta() {
+        return contadorDineroTarjeta;
+    }
+
 
     public static String getPassword() {
 
@@ -142,12 +148,12 @@ public class Utilidades {
                             dineroSuficiente = false;
                             break;
                     }
-                    System.out.println("dinero introducido fase final: "+dineroIntroducido+" precioProducto: "+precioProducto);
+                    System.out.println("dinero introducido fase final: " + dineroIntroducido + " precioProducto: " + precioProducto);
                     if (dineroIntroducido >= precioProducto) {
                         dineroSuficiente = false;
                         formaDePago = true;
                         System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
-                    }else{
+                    } else {
                         System.out.println("Fallo inesperado");
                     }
                 } while ((dineroSuficiente));
@@ -167,6 +173,7 @@ public class Utilidades {
                 System.out.println(TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta));
                 if (TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta)) {
                     JOptionPane.showMessageDialog(null, "Compra realizada con exito");
+                     contadorDineroTarjeta += precioProducto;
                     formaDePago = true;
                 } else {
                     formaDePago = false;
@@ -179,6 +186,12 @@ public class Utilidades {
 
         }
         return formaDePago;
+    }
+
+    public static int pagoTotalConTarjeta(int precioProducto) {
+        int totalRecaudado = 0;
+        totalRecaudado += precioProducto;
+        return totalRecaudado;
     }
 
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
@@ -337,7 +350,7 @@ public class Utilidades {
         int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0;
         dineroPagado -= precio;
         if (precio <= dineroPagado) {
-            
+
             System.out.println("------------------1.5-------------------");
             do {
                 System.out.println("----------1-9-------------------");
@@ -346,7 +359,7 @@ public class Utilidades {
                     dineroPagado -= d1000.getValor();
                     d1000.setCantidad(d1000.getCantidad() - 1);
                     cont1000++;
-                }else{
+                } else {
                     System.out.println("---------3---------------");
                 }
 
@@ -402,14 +415,14 @@ public class Utilidades {
                     cont5++;
                 }
             } while (d5.getCantidad() == 0 || dineroPagado >= d5.getValor());
-        }else{
+        } else {
             System.out.println("---------1---------------");
         }
         return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20€:" + cont20 + "| 0,10€:" + cont10 + "| 0,05€:" + cont5;
 
     }
 
-    public static void consultarEfectivoTotal(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000,Dinero d2000, MaquinaVending m1) {
+    public static void consultarEfectivoTotal(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000, MaquinaVending m1) {
         int cantidad = 0;
         cantidad += d5.getValor() * d5.getCantidad();
         cantidad += d10.getValor() * d10.getCantidad();
@@ -423,11 +436,10 @@ public class Utilidades {
         m1.setDeposito(cantidad);
 
     }
-    
-    public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000,Dinero d2000){
-        return "El dinero de la máquina es: \n 5cts: " + d5.getCantidad() + " monedas\n 10cts: " + d10.getCantidad() + " monedas\n 20cts: " 
-                + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: " 
-                + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() +  " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad()+" billetes";
+
+    public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
+        return "El dinero de la máquina es: \n 5cts: " + d5.getCantidad() + " monedas\n 10cts: " + d10.getCantidad() + " monedas\n 20cts: "
+                + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: "
+                + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() + " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad() + " billetes";
     }
 }
-
