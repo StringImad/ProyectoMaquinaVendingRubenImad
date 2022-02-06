@@ -39,7 +39,7 @@ public class Programa {
         Dinero d50 = new Dinero(50, 10);
         Dinero d100 = new Dinero(100, 5);
         Dinero d200 = new Dinero(200, 0);
-        Dinero d500 = new Dinero(500, 3);
+        Dinero d500 = new Dinero(500, 0);
         Dinero d1000 = new Dinero(1000, 0);
         Dinero d2000 = new Dinero(2000, 0);
         do {
@@ -226,7 +226,7 @@ public class Programa {
                                     break;
                                 case 1:
                                     //Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
-                                    
+
                                     break;
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
@@ -256,31 +256,31 @@ public class Programa {
             } else {
                 switch ((codigoSwitch)) {
                     case 1:
-                        compraProducto(codigo, listaBandejas,d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
 
                         break;
                     case 2:
-                        compraProducto(codigo, listaBandejas,d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
 
                         break;
 
                     case 3:
-                        compraProducto(codigo, listaBandejas,d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
 
                         break;
 
                     case 4:
-                        compraProducto(codigo, listaBandejas,d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
 
                         break;
 
                     case 5:
-                        compraProducto(codigo, listaBandejas,d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
 
                         break;
 
                     case 6:
-                        compraProducto(codigo, listaBandejas,d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
 
                         break;
                 }
@@ -288,7 +288,8 @@ public class Programa {
         } while (repetir);
     }
 //metodo privado y estatico que recibe el codigo y la lista de bandeja
-    private static void compraProducto(String codigo, ArrayList bandeja,Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
+
+    private static void compraProducto(String codigo, ArrayList bandeja, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
         ArrayList<Bandeja> listaBandejas = bandeja;
 
         for (Bandeja listaBandeja : listaBandejas) {
