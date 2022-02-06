@@ -21,9 +21,9 @@ public class Programa {
         //Declaracion de variables
         String codigo = "";
         //Guardamos en este string el codigo aleatorio generado para se le codigo de administrador
-        String codigoGenerado = Utilidades.getPassword();
+        final String  CODIGO_GENERADO = Utilidades.getPassword();
         //Se imprime el codigo para que sea mas facil de introdcuir
-        System.out.println(codigoGenerado);
+        System.out.println(CODIGO_GENERADO);
         //Creamos un arrayList de bandejas apartir de un fichero csv
         ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
         boolean repetir = true;
@@ -43,10 +43,10 @@ public class Programa {
         do {
 
             do {
-                codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
+                codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + CODIGO_GENERADO + "\n" + listaBandejas + "\nIntroduce un codigo");
 
                 try {
-                    if (codigo.equals(codigoGenerado)) {
+                    if (codigo.equals(CODIGO_GENERADO)) {
                         break;
                     }
                     codigoSwitch = Integer.parseInt(codigo);
@@ -60,7 +60,7 @@ public class Programa {
                 }
             } while (comprobarIntroduccionIncorrectaUsuario);
             System.out.println("-------Erroe 1");
-            if (codigo.contentEquals(codigoGenerado)) {
+            if (codigo.contentEquals(CODIGO_GENERADO)) {
                 do {
                     repetirMenuAdmin = true;
                     String[] botones = {
@@ -168,13 +168,26 @@ public class Programa {
                             break;
 
                         case 3:
-//                            int ventanaEfectivo = JOptionPane.showOptionDialog(null,
-//                                    "Elige la opcion que desea:",
-//                                    "Bienvenido al menu de administracion",
-//                                    JOptionPane.INFORMATION_MESSAGE,
-//                                    JOptionPane.QUESTION_MESSAGE, null,
-//                                    botones, botones[0]);
-                            JOptionPane.showMessageDialog(null, Utilidades.consultarEfectivo(d5, d10, d20, d50, d100, d200, d500, d1000, d2000));
+                            String[] botonesEfectivo = {
+                                "Consultar efectivo",
+                                "recaudar efectivo", "salir"};
+                            int ventanaEfectivo = JOptionPane.showOptionDialog(null,
+                                    "Elige la opcion que desea:",
+                                    "Bienvenido al menu de administracion",
+                                    JOptionPane.INFORMATION_MESSAGE,
+                                    JOptionPane.QUESTION_MESSAGE, null,
+                                    botonesEfectivo, botonesEfectivo[0]);
+
+                            switch (ventanaEfectivo) {
+                                case 0:
+                                    JOptionPane.showMessageDialog(null, Utilidades.consultarEfectivo(d5, d10, d20, d50, d100, d200, d500, d1000, d2000));
+                                    break;
+                                case 1:
+                                 Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
+                                 break;
+                                case 2:
+                                    JOptionPane.showMessageDialog(null, "volviendo al menu");
+                            }
                             break;
                         case 4:
                             Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);

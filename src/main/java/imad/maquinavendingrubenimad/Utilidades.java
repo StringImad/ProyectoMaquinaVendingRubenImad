@@ -142,11 +142,13 @@ public class Utilidades {
                             dineroSuficiente = false;
                             break;
                     }
-
+                    System.out.println("dinero introducido fase final: "+dineroIntroducido+" precioProducto: "+precioProducto);
                     if (dineroIntroducido >= precioProducto) {
                         dineroSuficiente = false;
                         formaDePago = true;
                         System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
+                    }else{
+                        System.out.println("Fallo inesperado");
                     }
                 } while ((dineroSuficiente));
 //                for (Bandeja listaBandeja : listaBandejas) {
@@ -335,11 +337,17 @@ public class Utilidades {
         int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0;
         dineroPagado -= precio;
         if (precio < dineroPagado) {
+            
+            System.out.println("------------------1.5-------------------");
             do {
+                System.out.println("----------1-9-------------------");
                 if (dineroPagado >= d1000.getValor()) {
+                    System.out.println("--------------------2-----------------");
                     dineroPagado -= d1000.getValor();
                     d1000.setCantidad(d1000.getCantidad() - 1);
                     cont1000++;
+                }else{
+                    System.out.println("---------3---------------");
                 }
 
             } while (d1000.getCantidad() == 0 || dineroPagado >= d1000.getValor());
@@ -394,6 +402,8 @@ public class Utilidades {
                     cont5++;
                 }
             } while (d5.getCantidad() == 0 || dineroPagado >= d5.getValor());
+        }else{
+            System.out.println("---------1---------------");
         }
         return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20€:" + cont20 + "| 0,10€:" + cont10 + "| 0,05€:" + cont5;
 
@@ -415,8 +425,7 @@ public class Utilidades {
     }
     
     public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000,Dinero d2000){
-        String dinero = "";
-        return dinero = "El dinero de la máquina es: \n 0.05€:" + d5.getCantidad() + "\n 0.10€:" + d10.getCantidad() + "\n 0.20€:" + d20.getCantidad() + "\n 0.50€:" + d50.getCantidad() + "\n 1€:" + d100.getCantidad() + "\n 2€:" + d200.getCantidad() + "\n 5€:" + d500.getCantidad() +  "\n 10€:" + d1000.getCantidad() + "\n 20€:" + d2000.getCantidad();
+        return "El dinero de la máquina es: \n 5cts: " + d5.getCantidad() + " monedas\n 10cts: " + d10.getCantidad() + " monedas\n 20cts: " + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: " + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() +  " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad()+" billetes";
     }
 }
 //    public static void leerProductos(Bandeja[] bandeja) {
