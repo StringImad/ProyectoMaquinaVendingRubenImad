@@ -100,24 +100,39 @@ public class Programa {
                                     }
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
-
-                                case 3:
-
                             }
 
                             break;
                         case 1:
+                            String[] botonesProducto = {
+                                "Consultar producto",
+                                "cambiar producto", "salir"};
                             int ventanaProducto = JOptionPane.showOptionDialog(null,
                                     "Elige la opcion que desea:",
                                     "Bienvenido al menu de administracion",
                                     JOptionPane.INFORMATION_MESSAGE,
                                     JOptionPane.QUESTION_MESSAGE, null,
-                                    botones, botones[0]);
+                                    botonesProducto, botonesProducto[0]);
+                             switch (ventanaProducto) {
+                                case 0:
+                                    JOptionPane.showMessageDialog(null, listaBandejas);
+                                    break;
+                                case 1:
+                                    String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
+                                    for (Bandeja listaBandeja : listaBandejas) {
+                                        if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
+                                            String nombreNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el nombre nuevo");
+                                            listaBandeja.setTipoDeProducto((nombreNuevo));
+                                        }
+                                    }
+                                case 2:
+                                    JOptionPane.showMessageDialog(null, "volviendo al menu");
+                            }
 
                             break;
 
                         case 2:
-                            int ventanaStock = JOptionPane.showOptionDialog(null,
+                            int ventanaStock = JOptionPane.showOptionDialog(null,           
                                     "Elige la opcion que desea:",
                                     "Bienvenido al menu de administracion",
                                     JOptionPane.INFORMATION_MESSAGE,
