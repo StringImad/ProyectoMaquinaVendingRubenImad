@@ -95,13 +95,25 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, listaBandejas);
                                     break;
                                 case 1:
-                                    String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
-                                    for (Bandeja listaBandeja : listaBandejas) {
-                                        if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
-                                            codigoNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el codigo nuevo");
-                                            listaBandeja.setCodigoProducto(Integer.parseInt(codigoNuevo));
+                                    String codigoNuevo = "";
+                                    do {
+                                        comprobarIntroduccionIncorrectaUsuario = false;
+                                        try {
+                                            codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
+                                            for (Bandeja listaBandeja : listaBandejas) {
+                                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
+                                                    codigoNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el codigo nuevo");
+                                                    listaBandeja.setCodigoProducto(Integer.parseInt(codigoNuevo));
+                                                }
+                                            }
+                                        } catch (NumberFormatException NFE) {
+                                            //Mensaje de error
+                                            JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                                                    + "Por favor ingrese un valor valido", "Error de formato",
+                                                    JOptionPane.ERROR_MESSAGE);
+                                            comprobarIntroduccionIncorrectaUsuario = true;
                                         }
-                                    }
+                                    } while (comprobarIntroduccionIncorrectaUsuario);
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
                             }
@@ -122,13 +134,25 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, listaBandejas);
                                     break;
                                 case 1:
-                                    String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
-                                    for (Bandeja listaBandeja : listaBandejas) {
-                                        if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
-                                            String nombreNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el nombre nuevo");
-                                            listaBandeja.setTipoDeProducto((nombreNuevo));
+                                    do {
+                                        comprobarIntroduccionIncorrectaUsuario = false;
+                                        try {
+                                            String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
+                                            for (Bandeja listaBandeja : listaBandejas) {
+                                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
+                                                    String nombreNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el nombre nuevo");
+                                                    listaBandeja.setTipoDeProducto((nombreNuevo));
+                                                }
+                                            }
+
+                                        } catch (NumberFormatException NFE) {
+                                            //Mensaje de error
+                                            JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                                                    + "Por favor ingrese un valor valido", "Error de formato",
+                                                    JOptionPane.ERROR_MESSAGE);
+                                            comprobarIntroduccionIncorrectaUsuario = true;
                                         }
-                                    }
+                                    } while (comprobarIntroduccionIncorrectaUsuario);
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
                             }
@@ -158,16 +182,27 @@ public class Programa {
                                     break;
 
                                 case 1:
-                                    String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
-                                    String stockNuevo;
-                                    for (Bandeja listaBandeja : listaBandejas) {
-                                        if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
-                                            do {
-                                                stockNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el stock nuevo");
-                                            } while (Integer.parseInt(stockNuevo) >= 16 || Integer.parseInt(stockNuevo) <= 0);
-                                            listaBandeja.setStockBandeja((Integer.parseInt(stockNuevo)));
+                                    do {
+                                        comprobarIntroduccionIncorrectaUsuario = false;
+                                        try {
+                                            String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
+                                            String stockNuevo;
+                                            for (Bandeja listaBandeja : listaBandejas) {
+                                                if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
+                                                    do {
+                                                        stockNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el stock nuevo");
+                                                    } while (Integer.parseInt(stockNuevo) >= 16 || Integer.parseInt(stockNuevo) <= 0);
+                                                    listaBandeja.setStockBandeja((Integer.parseInt(stockNuevo)));
+                                                }
+                                            }
+                                        } catch (NumberFormatException NFE) {
+                                            //Mensaje de error
+                                            JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
+                                                    + "Por favor ingrese un valor valido", "Error de formato",
+                                                    JOptionPane.ERROR_MESSAGE);
+                                            comprobarIntroduccionIncorrectaUsuario = true;
                                         }
-                                    }
+                                    } while (comprobarIntroduccionIncorrectaUsuario);
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
                             }
