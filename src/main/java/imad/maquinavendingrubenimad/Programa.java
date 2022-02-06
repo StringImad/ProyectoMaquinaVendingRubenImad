@@ -21,7 +21,7 @@ public class Programa {
         //Declaracion de variables
         String codigo = "";
         //Guardamos en este string el codigo aleatorio generado para se le codigo de administrador
-        final String  CODIGO_GENERADO = Utilidades.getPassword();
+        final String CODIGO_GENERADO = Utilidades.getPassword();
         //Se imprime el codigo para que sea mas facil de introdcuir
         System.out.println(CODIGO_GENERADO);
         //Creamos un arrayList de bandejas apartir de un fichero csv
@@ -162,7 +162,9 @@ public class Programa {
                                     String stockNuevo;
                                     for (Bandeja listaBandeja : listaBandejas) {
                                         if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
-                                            stockNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el stock nuevo");
+                                            do {
+                                                stockNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el stock nuevo");
+                                            } while (Integer.parseInt(stockNuevo) >= 16 || Integer.parseInt(stockNuevo) <= 0);
                                             listaBandeja.setStockBandeja((Integer.parseInt(stockNuevo)));
                                         }
                                     }
@@ -187,8 +189,8 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, Utilidades.consultarEfectivo(d5, d10, d20, d50, d100, d200, d500, d1000, d2000));
                                     break;
                                 case 1:
-                                 Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
-                                 break;
+                                    Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
+                                    break;
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
                             }
@@ -200,7 +202,7 @@ public class Programa {
 //                            Utilidades.consultarEfectivoTotal(d5, d10, d20, d50, d100, d200, d500, d1000, d2000, m1);
 //                            JOptionPane.showMessageDialog(null, m1.getDeposito() + "€");
                             dineroRecaudado = Utilidades.getContadorDineroTarjeta();
-                             JOptionPane.showMessageDialog(null,"Se han recaudado: "+(dineroRecaudado/100)+" €");
+                            JOptionPane.showMessageDialog(null, "Se han recaudado: " + (dineroRecaudado / 100) + " €");
                             break;
                         case 6:
                             repetirMenuAdmin = false;
@@ -217,43 +219,53 @@ public class Programa {
             } else {
                 switch ((codigoSwitch)) {
                     case 1:
-                        for (Bandeja listaBandeja : listaBandejas) {
-                            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                                JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto()) / 100 + "€.");
-                                if (Utilidades.formaPagoEfectivoTarjeta((codigo), listaBandejas)) {
-                                    JOptionPane.showMessageDialog(null, "Recoja su producto, gracias por su compra");
-                                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
-
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "La compra no se ha realizado");
-
-                                }
-                            }
-
-                        }
+                        compraProducto(codigo, listaBandejas);
 
                         break;
                     case 2:
+                        compraProducto(codigo, listaBandejas);
 
                         break;
 
                     case 3:
+                        compraProducto(codigo, listaBandejas);
 
                         break;
 
                     case 4:
+                        compraProducto(codigo, listaBandejas);
 
                         break;
 
                     case 5:
+                        compraProducto(codigo, listaBandejas);
 
                         break;
 
                     case 6:
+                        compraProducto(codigo, listaBandejas);
 
                         break;
                 }
             }
         } while (repetir);
+    }
+
+    private static void compraProducto(String codigo, ArrayList bandeja) {
+        ArrayList<Bandeja> listaBandejas = bandeja;
+
+        for (Bandeja listaBandeja : listaBandejas) {
+            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
+                JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto()) / 100 + "€.");
+                if (Utilidades.formaPagoEfectivoTarjeta((codigo), listaBandejas)) {
+                    JOptionPane.showMessageDialog(null, "Recoja su producto, gracias por su compra");
+                    listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "La compra no se ha realizado");
+
+                }
+            }
+        }
     }
 }
