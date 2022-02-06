@@ -5,6 +5,7 @@
  */
 package imad.maquinavendingrubenimad;
 
+import static imad.maquinavendingrubenimad.TarjetaDeCredito.CompararTarjetasLista;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -63,6 +64,13 @@ private static int contadorDineroTarjeta;
     public static boolean formaPagoEfectivoTarjeta(String codigo, ArrayList lista) {
         ArrayList<Bandeja> listaBandejas = lista;
         TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
+        TarjetaDeCredito tarjeta2 = new TarjetaDeCredito("1111222233334444", YearMonth.of(2021, 3), 222);
+        TarjetaDeCredito tarjeta3 = new TarjetaDeCredito("1111222244443333", YearMonth.of(2023, 3), 222);
+        ArrayList<TarjetaDeCredito> listaTarjetas = new ArrayList<>();
+        listaTarjetas.add(tarjeta);
+        listaTarjetas.add(tarjeta2);
+        listaTarjetas.add(tarjeta3);
+        
         boolean formaDePago = false;
         double precioProducto = 0;
         for (Bandeja listaBandeja : listaBandejas) {
@@ -171,6 +179,8 @@ private static int contadorDineroTarjeta;
                 TarjetaDeCredito tarjetaUsuario = validacionTarjetaIntroducida();
                 System.out.println("----Validaciones------");
                 System.out.println(TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta));
+                
+                System.out.println(CompararTarjetasLista(tarjetaUsuario,listaTarjetas));
                 if (TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta)) {
                     JOptionPane.showMessageDialog(null, "Compra realizada con exito");
                      contadorDineroTarjeta += precioProducto;
@@ -186,12 +196,6 @@ private static int contadorDineroTarjeta;
 
         }
         return formaDePago;
-    }
-
-    public static int pagoTotalConTarjeta(int precioProducto) {
-        int totalRecaudado = 0;
-        totalRecaudado += precioProducto;
-        return totalRecaudado;
     }
 
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
