@@ -27,6 +27,7 @@ public class Programa {
         //Creamos un arrayList de bandejas apartir de un fichero csv
         ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
         boolean repetir = true;
+        LocalDate ultimaFecha;
         boolean repetirMenuAdmin = true;
         int dineroRecaudado = 0;
         MaquinaVending m1 = new MaquinaVending();
@@ -68,7 +69,7 @@ public class Programa {
                         "Consultar y cambiar código",
                         "Consultar y cambiar el producto",
                         "Consultar y cambiar el stock",
-                        "Consultar el efectivo",
+                        "Consultar y recaudar efectivo",
                         "Recargar efectivo",
                         "Consultar dinero tarjetas",
                         "Apagar",
@@ -224,7 +225,8 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, Utilidades.consultarEfectivo(d5, d10, d20, d50, d100, d200, d500, d1000, d2000));
                                     break;
                                 case 1:
-                                    Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
+                                    //Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
+                                    
                                     break;
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
@@ -285,7 +287,7 @@ public class Programa {
             }
         } while (repetir);
     }
-
+//metodo privado y estatico que recibe el codigo y la lista de bandeja
     private static void compraProducto(String codigo, ArrayList bandeja) {
         ArrayList<Bandeja> listaBandejas = bandeja;
 
