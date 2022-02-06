@@ -398,32 +398,27 @@ public class Utilidades {
         return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20€:" + cont20 + "| 0,10€:" + cont10 + "| 0,05€:" + cont5;
 
     }
-}
 
-//    public static void consultarEfectivo(){
-//        Dinero d5 = new Dinero(5, 10);
-//        Dinero d10 = new Dinero(5, 10);
-//        Dinero d20 = new Dinero(5, 10);
-//        Dinero d50 = new Dinero(5, 10);
-//        Dinero d100 = new Dinero(5, 7);
-//        Dinero d200 = new Dinero(5, 5);
-//        Dinero d500 = new Dinero(5, 3);
-//        Dinero d1000 = new Dinero(5, 2);
-//        int cantidad = 0;
-//        MaquinaVending m2 = new MaquinaVending();
-//        cantidad += d5.getValor()*d5.getCantidad();
-//        cantidad += d10.getValor()*d10.getCantidad();
-//        cantidad += d20.getValor()*d20.getCantidad();
-//        cantidad += d50.getValor()*d50.getCantidad();
-//        cantidad += d100.getValor()*d100.getCantidad();
-//        cantidad += d200.getValor()*d200.getCantidad();
-//        cantidad += d500.getValor()*d500.getCantidad();
-//        cantidad += d1000.getValor()*d1000.getCantidad();
-//        
-//        m2.setDeposito(cantidad);
-//        
-//        JOptionPane.showMessageDialog(null, m2.getDeposito());
-//    }
+    public static void consultarEfectivoTotal(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000,Dinero d2000, MaquinaVending m1) {
+        int cantidad = 0;
+        cantidad += d5.getValor() * d5.getCantidad();
+        cantidad += d10.getValor() * d10.getCantidad();
+        cantidad += d20.getValor() * d20.getCantidad();
+        cantidad += d50.getValor() * d50.getCantidad();
+        cantidad += d100.getValor() * d100.getCantidad();
+        cantidad += d200.getValor() * d200.getCantidad();
+        cantidad += d500.getValor() * d500.getCantidad();
+        cantidad += d1000.getValor() * d1000.getCantidad();
+        cantidad += d2000.getValor() * d2000.getCantidad();
+        m1.setDeposito(cantidad);
+
+    }
+    
+    public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000,Dinero d2000){
+        String dinero = "";
+        return dinero = "El dinero de la máquina es: \n 0.05€:" + d5.getCantidad() + "\n 0.10€:" + d10.getCantidad() + "\n 0.20€:" + d20.getCantidad() + "\n 0.50€:" + d50.getCantidad() + "\n 1€:" + d100.getCantidad() + "\n 2€:" + d200.getCantidad() + "\n 5€:" + d500.getCantidad() +  "\n 10€:" + d1000.getCantidad() + "\n 20€:" + d2000.getCantidad();
+    }
+}
 //    public static void leerProductos(Bandeja[] bandeja) {
 //
 //        JOptionPane.showMessageDialog(null, "El productos es " + bandeja[0].getTipoDeProducto() + " y su código es " + bandeja[0].getCodigoProducto() + " y cuesta " + bandeja[1].getPrecioProducto() + "€" + "\n"

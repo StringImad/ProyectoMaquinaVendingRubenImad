@@ -32,24 +32,25 @@ public class Programa {
         boolean comprobarIntroduccionIncorrectaUsuario = true;
         int codigoSwitch = 0;
         Dinero d5 = new Dinero(5, 10);
-        Dinero d10 = new Dinero(5, 10);
-        Dinero d20 = new Dinero(5, 10);
-        Dinero d50 = new Dinero(5, 10);
-        Dinero d100 = new Dinero(5, 7);
-        Dinero d200 = new Dinero(5, 5);
-        Dinero d500 = new Dinero(5, 3);
-        Dinero d1000 = new Dinero(5, 2);
+        Dinero d10 = new Dinero(10, 10);
+        Dinero d20 = new Dinero(20, 10);
+        Dinero d50 = new Dinero(50, 10);
+        Dinero d100 = new Dinero(100, 7);
+        Dinero d200 = new Dinero(200, 5);
+        Dinero d500 = new Dinero(500, 3);
+        Dinero d1000 = new Dinero(1000, 2);
+        Dinero d2000 = new Dinero(2000, 0);
         do {
 
             do {
                 codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + codigoGenerado + "\n" + listaBandejas + "\nIntroduce un codigo");
 
                 try {
-                    if(codigo.equals(codigoGenerado)){
+                    if (codigo.equals(codigoGenerado)) {
                         break;
                     }
                     codigoSwitch = Integer.parseInt(codigo);
-                     comprobarIntroduccionIncorrectaUsuario = false;
+                    comprobarIntroduccionIncorrectaUsuario = false;
                 } catch (NumberFormatException NFE) {
                     //Mensaje de error
                     JOptionPane.showMessageDialog(null, "Formato incorrecto:\n"
@@ -101,7 +102,6 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
 
                                 case 3:
-                                    
 
                             }
 
@@ -113,7 +113,9 @@ public class Programa {
                                     JOptionPane.INFORMATION_MESSAGE,
                                     JOptionPane.QUESTION_MESSAGE, null,
                                     botones, botones[0]);
+
                             break;
+
                         case 2:
                             int ventanaStock = JOptionPane.showOptionDialog(null,
                                     "Elige la opcion que desea:",
@@ -122,19 +124,22 @@ public class Programa {
                                     JOptionPane.QUESTION_MESSAGE, null,
                                     botones, botones[0]);
                             break;
+
                         case 3:
-                            int ventanaEfectivo = JOptionPane.showOptionDialog(null,
-                                    "Elige la opcion que desea:",
-                                    "Bienvenido al menu de administracion",
-                                    JOptionPane.INFORMATION_MESSAGE,
-                                    JOptionPane.QUESTION_MESSAGE, null,
-                                    botones, botones[0]);
+//                            int ventanaEfectivo = JOptionPane.showOptionDialog(null,
+//                                    "Elige la opcion que desea:",
+//                                    "Bienvenido al menu de administracion",
+//                                    JOptionPane.INFORMATION_MESSAGE,
+//                                    JOptionPane.QUESTION_MESSAGE, null,
+//                                    botones, botones[0]);
+                            JOptionPane.showMessageDialog(null, Utilidades.consultarEfectivo(d5, d10, d20, d50, d100, d200, d500, d1000, d2000));
                             break;
                         case 4:
-                            
+                            Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
                             break;
                         case 5:
-                            Utilidades.cambiarCantidad(d5,d10,d20,d50,d100,d200,d500,d1000);
+                            Utilidades.consultarEfectivoTotal(d5, d10, d20, d50, d100, d200, d500, d1000, d2000, m1);
+                            JOptionPane.showMessageDialog(null, m1.getDeposito() + "€");
                             break;
                         case 6:
                             repetirMenuAdmin = false;
@@ -158,8 +163,8 @@ public class Programa {
 
                                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
 
-                                }else{
-                                JOptionPane.showMessageDialog(null, "La compra no se ha realizado");
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "La compra no se ha realizado");
 
                                 }
                             }
