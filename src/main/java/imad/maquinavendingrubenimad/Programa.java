@@ -113,7 +113,7 @@ public class Programa {
                                     JOptionPane.INFORMATION_MESSAGE,
                                     JOptionPane.QUESTION_MESSAGE, null,
                                     botonesProducto, botonesProducto[0]);
-                             switch (ventanaProducto) {
+                            switch (ventanaProducto) {
                                 case 0:
                                     JOptionPane.showMessageDialog(null, listaBandejas);
                                     break;
@@ -132,12 +132,39 @@ public class Programa {
                             break;
 
                         case 2:
-                            int ventanaStock = JOptionPane.showOptionDialog(null,           
+                            String[] botonesStock = {
+                                "Consultar stock",
+                                "cambiar stock", "salir"};
+                            int ventanaStock = JOptionPane.showOptionDialog(null,
                                     "Elige la opcion que desea:",
                                     "Bienvenido al menu de administracion",
                                     JOptionPane.INFORMATION_MESSAGE,
                                     JOptionPane.QUESTION_MESSAGE, null,
-                                    botones, botones[0]);
+                                    botonesStock, botonesStock[0]);
+
+                            switch (ventanaStock) {
+                                case 0:
+                                    String stock = "";
+                                    stock = listaBandejas.stream().map(listaBandeja -> listaBandeja.toStringStock() + "\n").reduce(stock, String::concat);
+//                                    for (Bandeja listaBandeja : listaBandejas) {
+//                                        stock += listaBandeja.toStringStock() + "\n";
+//                                    }
+                                    JOptionPane.showMessageDialog(null, stock);
+
+                                    break;
+
+                                case 1:
+                                    String codigoNuevo = JOptionPane.showInputDialog(listaBandejas + "\nIntroduce el codigo del producto que desea modificar");
+                                    String stockNuevo;
+                                    for (Bandeja listaBandeja : listaBandejas) {
+                                        if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigoNuevo)) {
+                                            stockNuevo = JOptionPane.showInputDialog("El producto es " + listaBandeja.getTipoDeProducto() + " introduce el stock nuevo");
+                                            listaBandeja.setStockBandeja((Integer.parseInt(stockNuevo)));
+                                        }
+                                    }
+                                case 2:
+                                    JOptionPane.showMessageDialog(null, "volviendo al menu");
+                            }
                             break;
 
                         case 3:

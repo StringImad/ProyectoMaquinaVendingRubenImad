@@ -62,5 +62,9 @@ public class Bandeja {
     public String toString() {
         return "Producto: " + getTipoDeProducto() + ", Código: " +getCodigoProducto() +"\n";
     }
+    
+    public String toStringStock() {
+      return "Producto: " + getTipoDeProducto() + ", Código: " +getCodigoProducto() +", Stock: "+getStockBandeja()+"\n";
+    }
 
 }
