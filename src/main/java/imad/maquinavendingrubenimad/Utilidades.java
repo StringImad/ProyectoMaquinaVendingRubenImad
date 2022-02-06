@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  * @author diabl
  */
 public class Utilidades {
-private static int contadorDineroTarjeta;
+
+    private static int contadorDineroTarjeta;
 
     public static int getContadorDineroTarjeta() {
         return contadorDineroTarjeta;
     }
-
 
     public static String getPassword() {
 
@@ -183,7 +183,7 @@ private static int contadorDineroTarjeta;
                 System.out.println(CompararTarjetasLista(tarjetaUsuario,listaTarjetas));
                 if (TarjetaDeCredito.CompararTarjetas(tarjetaUsuario, tarjeta)) {
                     JOptionPane.showMessageDialog(null, "Compra realizada con exito");
-                     contadorDineroTarjeta += precioProducto;
+                    contadorDineroTarjeta += precioProducto;
                     formaDePago = true;
                 } else {
                     formaDePago = false;
@@ -355,72 +355,65 @@ private static int contadorDineroTarjeta;
         dineroPagado -= precio;
         if (precio <= dineroPagado) {
 
-            System.out.println("------------------1.5-------------------");
-            do {
-                System.out.println("----------1-9-------------------");
-                if (dineroPagado >= d1000.getValor()) {
-                    System.out.println("--------------------2-----------------");
+            while (d1000.getCantidad() == 0 && dineroPagado >= d1000.getValor()) {
+                if (dineroPagado >= d1000.getValor() || d200.getCantidad() != 0) {
                     dineroPagado -= d1000.getValor();
                     d1000.setCantidad(d1000.getCantidad() - 1);
                     cont1000++;
-                } else {
-                    System.out.println("---------3---------------");
                 }
-
-            } while (d1000.getCantidad() == 0 || dineroPagado >= d1000.getValor());
-            do {
-                if (dineroPagado >= d500.getValor()) {
+            }
+            while (d500.getCantidad() == 0 && dineroPagado >= d500.getValor()) {
+                if (dineroPagado >= d500.getValor() || d500.getCantidad() != 0) {
                     dineroPagado -= d500.getValor();
                     d500.setCantidad(d500.getCantidad() - 1);
                     cont500++;
                 }
+            }
 
-            } while (d500.getCantidad() == 0 || dineroPagado >= d500.getValor());
-
-            do {
-                if (dineroPagado >= d200.getValor()) {
+            while (d200.getCantidad() == 0 && dineroPagado >= d200.getValor()) {
+                if (dineroPagado >= d200.getValor() || d200.getCantidad() != 0) {
                     dineroPagado -= d200.getValor();
                     d200.setCantidad(d200.getCantidad() - 1);
                     cont200++;
                 }
-            } while (d200.getCantidad() == 0 || dineroPagado >= d200.getValor());
-            do {
-                if (dineroPagado >= d100.getValor()) {
+            }
+
+            while (d100.getCantidad() == 0 && dineroPagado >= d100.getValor()) {
+                if (dineroPagado >= d100.getValor() || d100.getCantidad() != 0) {
                     dineroPagado -= d100.getValor();
-                    d100.setCantidad(d100.getCantidad() - 1);
+                    d200.setCantidad(d100.getCantidad() - 1);
                     cont100++;
                 }
-            } while (d100.getCantidad() == 0 || dineroPagado >= d100.getValor());
-            do {
-                if (dineroPagado >= d50.getValor()) {
+            }
+            while (d50.getCantidad() == 0 && dineroPagado >= d50.getValor()) {
+                if (dineroPagado >= d50.getValor() || d50.getCantidad() != 0) {
                     dineroPagado -= d50.getValor();
                     d50.setCantidad(d50.getCantidad() - 1);
                     cont50++;
                 }
-            } while (d50.getCantidad() == 0 || dineroPagado >= d50.getValor());
-            do {
-                if (dineroPagado >= d20.getValor()) {
+            }
+            while (d20.getCantidad() == 0 && dineroPagado >= d20.getValor()) {
+                if (dineroPagado >= d20.getValor() || d20.getCantidad() != 0) {
                     dineroPagado -= d20.getValor();
                     d20.setCantidad(d20.getCantidad() - 1);
                     cont20++;
                 }
-            } while (d20.getCantidad() == 0 || dineroPagado >= d20.getValor());
-            do {
-                if (dineroPagado >= d10.getValor()) {
+            }
+            while (d10.getCantidad() == 0 && dineroPagado >= d10.getValor()) {
+                if (dineroPagado >= d10.getValor() || d10.getCantidad() != 0) {
                     dineroPagado -= d10.getValor();
                     d10.setCantidad(d10.getCantidad() - 1);
-                    cont1000++;
+                    cont10++;
                 }
-            } while (d10.getCantidad() == 0 || dineroPagado >= d10.getValor());
-            do {
-                if (dineroPagado >= d5.getValor()) {
+            }
+            while (d5.getCantidad() == 0 && dineroPagado >= d5.getValor()) {
+                if (dineroPagado >= d5.getValor() || d5.getCantidad() != 0) {
                     dineroPagado -= d5.getValor();
-                    d5.setCantidad(d5.getCantidad() - 1);
+                    d5.setCantidad(d200.getCantidad() - 1);
                     cont5++;
                 }
-            } while (d5.getCantidad() == 0 || dineroPagado >= d5.getValor());
-        } else {
-            System.out.println("---------1---------------");
+            }
+        
         }
         return StringFinal = "Dinero devuelto = 10€:" + cont1000 + "| 5€:" + cont500 + "| 2€:" + cont200 + "| 1€:" + cont100 + "| 0,50€:" + cont50 + "| 0,20€:" + cont20 + "| 0,10€:" + cont10 + "| 0,05€:" + cont5;
 
