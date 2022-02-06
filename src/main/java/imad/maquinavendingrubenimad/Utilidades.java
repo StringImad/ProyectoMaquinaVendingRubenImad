@@ -336,7 +336,7 @@ public class Utilidades {
         String dialogo = "";
         int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0;
         dineroPagado -= precio;
-        if (precio < dineroPagado) {
+        if (precio <= dineroPagado) {
             
             System.out.println("------------------1.5-------------------");
             do {
@@ -425,18 +425,9 @@ public class Utilidades {
     }
     
     public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000,Dinero d2000){
-        return "El dinero de la máquina es: \n 5cts: " + d5.getCantidad() + " monedas\n 10cts: " + d10.getCantidad() + " monedas\n 20cts: " + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: " + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() +  " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad()+" billetes";
+        return "El dinero de la máquina es: \n 5cts: " + d5.getCantidad() + " monedas\n 10cts: " + d10.getCantidad() + " monedas\n 20cts: " 
+                + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: " 
+                + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() +  " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad()+" billetes";
     }
 }
-//    public static void leerProductos(Bandeja[] bandeja) {
-//
-//        JOptionPane.showMessageDialog(null, "El productos es " + bandeja[0].getTipoDeProducto() + " y su código es " + bandeja[0].getCodigoProducto() + " y cuesta " + bandeja[1].getPrecioProducto() + "€" + "\n"
-//                + "El productos es " + bandeja[1].getTipoDeProducto() + " y su código es " + bandeja[1].getCodigoProducto() + " y cuesta " + bandeja[1].getPrecioProducto() + "€" + "\n"
-//                + "El productos es " + bandeja[2].getTipoDeProducto() + " y su código es " + bandeja[2].getCodigoProducto() + " y cuesta " + bandeja[2].getPrecioProducto() + "€" + "\n"
-//                + "El productos es " + bandeja[3].getTipoDeProducto() + " y su código es " + bandeja[3].getCodigoProducto() + " y cuesta " + bandeja[3].getPrecioProducto() + "€" + "\n"
-//                + "El productos es " + bandeja[4].getTipoDeProducto() + " y su código es " + bandeja[4].getCodigoProducto() + " y cuesta " + bandeja[4].getPrecioProducto() + "€" + "\n"
-//                + "El productos es " + bandeja[5].getTipoDeProducto() + " y su código es " + bandeja[5].getCodigoProducto() + " y cuesta " + bandeja[5].getPrecioProducto() + "€"
-//        );
-//
-//    }
 

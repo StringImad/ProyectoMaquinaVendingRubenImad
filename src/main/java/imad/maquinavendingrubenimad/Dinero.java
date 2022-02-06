@@ -40,10 +40,10 @@ public class Dinero {
             case 500:
                 this.valor = valor;
                 break;
-            case 10000:
+            case 1000:
                 this.valor = valor;
                 break;
-            case 20000:
+            case 2000:
                 this.valor = valor;
                 break;
             default:
