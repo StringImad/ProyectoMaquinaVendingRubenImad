@@ -225,8 +225,7 @@ public class Programa {
                                     JOptionPane.showMessageDialog(null, Utilidades.consultarEfectivo(d5, d10, d20, d50, d100, d200, d500, d1000, d2000));
                                     break;
                                 case 1:
-                                    //Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
-
+                                    Utilidades.recaudarDinero(d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
                                     break;
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
@@ -236,8 +235,6 @@ public class Programa {
                             Utilidades.cambiarCantidad(d5, d10, d20, d50, d100, d200, d500, d1000);
                             break;
                         case 5:
-//                            Utilidades.consultarEfectivoTotal(d5, d10, d20, d50, d100, d200, d500, d1000, d2000, m1);
-//                            JOptionPane.showMessageDialog(null, m1.getDeposito() + "€");
                             dineroRecaudado = Utilidades.getContadorDineroTarjeta();
                             JOptionPane.showMessageDialog(null, "Se han recaudado: " + (dineroRecaudado / 100) + " €");
                             break;

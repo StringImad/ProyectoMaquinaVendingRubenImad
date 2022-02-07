@@ -287,59 +287,53 @@ public class Utilidades {
         } while (comprobarIntroduccionIncorrectaUsuario);
         return cvv;
     }
-
+    //método para cambiar la cantidad del dinero de la máquina
     public static void cambiarCantidad(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
 
         String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
                 + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
         int moneda = Integer.parseInt(monedaString);
+        int cantidad = 0;
         switch (moneda) {
 
             case 5:
-                String stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                int cantidad = Integer.parseInt(stringCantidad);
-                d5.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d5.setCantidad(cantidad);
                 break;
             case 10:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d10.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d10.setCantidad(cantidad);
                 break;
             case 20:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d20.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d20.setCantidad(cantidad);
                 break;
             case 50:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d50.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d50.setCantidad(cantidad);
                 break;
             case 100:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d100.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d100.setCantidad(cantidad);
                 break;
             case 200:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d200.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d200.setCantidad(cantidad);
                 break;
             case 500:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d500.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d500.setCantidad(cantidad);
                 break;
             case 1000:
-                stringCantidad = JOptionPane.showInputDialog(null, "¿Que valor quieres darle?");
-                cantidad = Integer.parseInt(stringCantidad);
-                d1000.setCantidad(moneda);
+                cantidad = joptionTryCatch();
+                d1000.setCantidad(cantidad);
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Cantidad no valida");
         }
     }
 
+    //método en el cual nos da el cambio de las monedas si tiene las suficientes para hacerlo y si no dice eso
     public static String darCambio(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, int precio, int dineroPagado) {
         String StringFinal = "";
         String dialogo = "";
@@ -414,25 +408,53 @@ public class Utilidades {
         }
 
     }
-
-    public static void consultarEfectivoTotal(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000, MaquinaVending m1) {
-        int cantidad = 0;
+    
+    public static void recaudarDinero(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
+        double cantidad = 0;
         cantidad += d5.getValor() * d5.getCantidad();
+        d5.setCantidad(0);
         cantidad += d10.getValor() * d10.getCantidad();
+        d10.setCantidad(0);
         cantidad += d20.getValor() * d20.getCantidad();
+        d20.setCantidad(0);
         cantidad += d50.getValor() * d50.getCantidad();
+        d50.setCantidad(0);
         cantidad += d100.getValor() * d100.getCantidad();
+        d100.setCantidad(0);
         cantidad += d200.getValor() * d200.getCantidad();
+        d200.setCantidad(0);
         cantidad += d500.getValor() * d500.getCantidad();
+        d500.setCantidad(0);
         cantidad += d1000.getValor() * d1000.getCantidad();
+        d1000.setCantidad(0);
         cantidad += d2000.getValor() * d2000.getCantidad();
-        m1.setDeposito(cantidad);
-
+        d2000.setCantidad(0);
+        
+        JOptionPane.showMessageDialog(null, "Has recaudado:" + (cantidad/100) +"€");
     }
 
     public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
         return "El dinero de la máquina es: \n 5cts: " + d5.getCantidad() + " monedas\n 10cts: " + d10.getCantidad() + " monedas\n 20cts: "
                 + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: "
                 + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() + " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad() + " billetes";
+    }
+    
+    //try catch para las excepciones 
+    public static int joptionTryCatch() {
+        boolean seguir = true;
+        String stringCantidad;
+        int cantidad = 0;
+        do {
+            try {
+                stringCantidad = JOptionPane.showInputDialog(null, "¿Que cantidad vas a añadir?");
+                cantidad = Integer.parseInt(stringCantidad);
+                seguir = false;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El valor ingresado no es un número");
+                
+            }
+             
+        } while (seguir);
+        return cantidad;
     }
 }

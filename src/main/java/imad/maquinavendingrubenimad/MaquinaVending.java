@@ -14,7 +14,7 @@ import java.util.UUID;
 public class MaquinaVending {
 
     
-    private int deposito;
+    private double deposito;
     private String ubicacion;
     private final UUID id;
     private final String psw;
@@ -35,7 +35,7 @@ public class MaquinaVending {
         this.fecha = fecha;
     }
 
-    public int getDeposito() {
+    public double getDeposito() {
         return deposito;
     }
 
