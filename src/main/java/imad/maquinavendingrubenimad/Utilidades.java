@@ -152,7 +152,7 @@ public class Utilidades {
                                 dineroSuficiente = false;
                                 break;
                         }
-                        if (dineroIntroducido < precioProducto) {
+                        if (dineroIntroducido < precioProducto && dineroSuficiente) {
                             JOptionPane.showMessageDialog(null, "introduzca el siguiente importe, dinero actual:" + dineroIntroducido / 100 + "€");
                         }
                     } while (dineroIntroducido < precioProducto || !dineroSuficiente);
