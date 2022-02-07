@@ -408,7 +408,7 @@ public class Utilidades {
         }
 
     }
-    
+    //metodo para recaudar el dinero 
     public static void recaudarDinero(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
         double cantidad = 0;
         cantidad += d5.getValor() * d5.getCantidad();
