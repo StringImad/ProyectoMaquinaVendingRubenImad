@@ -158,6 +158,7 @@ public class Utilidades {
                     } while (dineroIntroducido < precioProducto || !dineroSuficiente);
 
                     System.out.println("dinero introducido fase final: " + dineroIntroducido + " precioProducto: " + precioProducto);
+                    System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
                     if (dineroIntroducido >= precioProducto && !(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido).contains("No"))) {
                         dineroSuficiente = false;
                         formaDePago = true;
@@ -175,6 +176,7 @@ public class Utilidades {
                     } else {
                         JOptionPane.showMessageDialog(null, "No hay dinero suficiente en la maquina\nIntroduce la cantidad exacta");
                         dineroIntroducido = 0;
+                        dineroSuficiente = true;
                     }
                 } while (dineroSuficiente);
 //                for (Bandeja listaBandeja : listaBandejas) {
