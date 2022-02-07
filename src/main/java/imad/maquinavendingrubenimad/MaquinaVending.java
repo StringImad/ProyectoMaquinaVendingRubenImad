@@ -13,20 +13,20 @@ import java.util.UUID;
  */
 public class MaquinaVending {
 
-    
+    //Declaracion de variables
     private double deposito;
     private String ubicacion;
     private final UUID id;
     private final String psw;
     private LocalDate fecha;
-
+//Constructor
     public MaquinaVending() {
         this.id = UUID.randomUUID();
         this.psw = Utilidades.getPassword();
     }
     
     
-    
+    //constructor parametrizado
     public MaquinaVending(int deposito, String ubicacion, LocalDate fecha) {
         this.deposito = deposito;
         this.ubicacion = ubicacion;
@@ -34,7 +34,7 @@ public class MaquinaVending {
         this.psw = Utilidades.getPassword();
         this.fecha = fecha;
     }
-
+//Geters and setter
     public double getDeposito() {
         return deposito;
     }
@@ -62,7 +62,7 @@ public class MaquinaVending {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-
+//toString
     @Override
     public String toString() {
         return "MaquinaVending{" + "deposito=" + deposito + ", ubicacion=" + ubicacion + ", id=" + id + ", fecha=" + fecha + '}';

@@ -10,22 +10,22 @@ package imad.maquinavendingrubenimad;
  * @author MSI
  */
 public class Bandeja {
-
+//Declaracion de variables
     private String tipoDeProducto;
     private int codigoProducto;
     private int precioProducto;
     private int stockBandeja;
-
+//constructor parametrizado
     public Bandeja(String tipoDeProducto, int codigoProducto, int precioProducto, int stockBandeja) {
         this.tipoDeProducto = tipoDeProducto;
         this.codigoProducto = codigoProducto;
         this.precioProducto = precioProducto;
         this.stockBandeja = stockBandeja;
     }
-
+//constructor por defecto
     public Bandeja() {
     }
-
+//GEtter and Setter
     public String getTipoDeProducto() {
         return tipoDeProducto;
     }

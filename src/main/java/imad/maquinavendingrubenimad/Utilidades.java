@@ -26,6 +26,7 @@ public class Utilidades {
     public static int getContadorDineroTarjeta() {
         return contadorDineroTarjeta;
     }
+//metodo publico y statico que devuelve un string con una clave generada aleatoria
 
     public static String getPassword() {
 
@@ -40,20 +41,26 @@ public class Utilidades {
         String todos = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%&()*+,-.:;<=>@";
 
         String pswd = "";
-
+//bucle for que genera 1 numero aleatorio
         for (int i = 0; i < 1; i++) {
             pswd += (numeros.charAt((int) (Math.random() * numeros.length())));
         }
+//bucle for que genera 1 mayuscula aleatoria
 
         for (int i = 0; i < 1; i++) {
             pswd += (mayus.charAt((int) (Math.random() * mayus.length())));
         }
+        //bucle for que genera 1 minuscula aleatoria
+
         for (int i = 0; i < 1; i++) {
             pswd += (minus.charAt((int) (Math.random() * minus.length())));
         }
+        //bucle for que genera 1 cracter especial aleatorio
+
         for (int i = 0; i < 1; i++) {
             pswd += (esp.charAt((int) (Math.random() * esp.length())));
         }
+//bucle for que genera 4 caracteres de todos los posibles
 
         for (int i = 0; i < 4; i++) {
             pswd += (todos.charAt((int) (Math.random() * todos.length())));
@@ -61,31 +68,33 @@ public class Utilidades {
 
         return pswd;
     }
+//metodo publico statico que devuele true si el pago se ha realizado con exito ya sea con tarjeta o en efectivo
 
     public static boolean formaPagoEfectivoTarjeta(String codigo, ArrayList lista, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
         ArrayList<Bandeja> listaBandejas = lista;
+        //Declaracion de objetos tipo tarneta
         TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
         TarjetaDeCredito tarjeta2 = new TarjetaDeCredito("1111222233334444", YearMonth.of(2021, 3), 222);
         TarjetaDeCredito tarjeta3 = new TarjetaDeCredito("1111222244443333", YearMonth.of(2023, 3), 222);
         ArrayList<TarjetaDeCredito> listaTarjetas = new ArrayList<>();
-        listaTarjetas.add(tarjeta);
-        listaTarjetas.add(tarjeta2);
-        listaTarjetas.add(tarjeta3);
 
+//Declaracion de variables
         boolean formaDePago = false;
         double precioProducto = 0;
-        for (Bandeja listaBandeja : listaBandejas) {
-
-            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
-                precioProducto = listaBandeja.getPrecioProducto();
-
-            }
-        }
-
-        System.out.println("Precio producto: " + precioProducto);
         double dineroIntroducido = 0;
         boolean dineroSuficiente = true;
         int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0, cont2000 = 0;
+        //Añadimos al array los objetos tarjeta
+        listaTarjetas.add(tarjeta);
+        listaTarjetas.add(tarjeta2);
+        listaTarjetas.add(tarjeta3);
+        //bucle for que nos da el precio del producto
+        for (Bandeja listaBandeja : listaBandejas) {
+            if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
+                precioProducto = listaBandeja.getPrecioProducto();
+            }
+        }
+
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
@@ -211,7 +220,7 @@ public class Utilidades {
         }
         return formaDePago;
     }
-
+//metodo que crea y devuelve un objeto tarjeta
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
         String codigo;
         int cvv = 0;
@@ -222,7 +231,7 @@ public class Utilidades {
         TarjetaDeCredito introducida = new TarjetaDeCredito(codigo, fechaUsuario, cvv);
         return introducida;
     }
-
+//metodo privado y estatico que devuelve un string con el codigo de 16 digitos creado correctamente 
     private static String compruebaIntroduccion16Numeros() {
         String codigo = null;
         double codigoComprobacion;
@@ -247,7 +256,7 @@ public class Utilidades {
 
         return codigo;
     }
-
+//metodo que devuelve YeraMonth correctos
     private static YearMonth compruebaIntroduccionFechaCaducidad() {
         String fechaCaducidad;
         int mes = 0, anyo = 0;
@@ -261,8 +270,10 @@ public class Utilidades {
                         try {
                             comprobarIntroduccionIncorrectaUsuario = false;
                             fechaCaducidad = JOptionPane.showInputDialog("Introduce la fecha de caducidad ejemplo: 10/24");
+                            //guaramos en array de String cada parte de la fecha tanto la izquierda como la derecha las dos separadas por una barra
                             String[] mesAnyo = fechaCaducidad.split("\\/");
                             mes = Integer.parseInt(mesAnyo[0]);
+                            //añadimos 20 para inidcar el milenio
                             anyo = Integer.parseInt(20 + mesAnyo[1]);
                         } catch (ArrayIndexOutOfBoundsException AIOOFBE) {
                             //Mensaje de error
@@ -272,7 +283,6 @@ public class Utilidades {
                             comprobarIntroduccionIncorrectaUsuario = true;
                         }
                     } while (comprobarIntroduccionIncorrectaUsuario);
-                    System.out.println(mes + "/" + anyo);
                     comprobarIntroduccionIncorrectaUsuario = false;
                 } while (mes < 1 || mes > 12 || anyo < 2022 || anyo > 2050);
             } catch (NumberFormatException ex) {
@@ -286,6 +296,7 @@ public class Utilidades {
         fecha = YearMonth.of(anyo, mes);
         return fecha;
     }
+//metodo privado y estatico que devuelve un string con el codigo de cvv creado correctamente 
 
     private static int compruebaIntroduccionCvv() {
         String cvvString;

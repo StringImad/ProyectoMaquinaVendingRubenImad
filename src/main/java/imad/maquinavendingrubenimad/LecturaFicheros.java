@@ -18,7 +18,7 @@ import java.util.Scanner;
  * @author MSI
  */
 public class LecturaFicheros {
-    
+    //metodo public estatico que devuelve una lista con objetos Bandeja apartir de un fichero leido 
      public static ArrayList<Bandeja> leerFicheroCsvArticulos(String idFichero) {
          ArrayList<Bandeja> listaArticulos = new ArrayList<>();
         String[] tokens;
