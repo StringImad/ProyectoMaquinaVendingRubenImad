@@ -38,9 +38,9 @@ public class Programa {
         Dinero d20 = new Dinero(20, 10);
         Dinero d50 = new Dinero(50, 10);
         Dinero d100 = new Dinero(100, 5);
-        Dinero d200 = new Dinero(200, 0);
-        Dinero d500 = new Dinero(500, 0);
-        Dinero d1000 = new Dinero(1000, 0);
+        Dinero d200 = new Dinero(200, 6);
+        Dinero d500 = new Dinero(500, 10);
+        Dinero d1000 = new Dinero(1000, 1);
         Dinero d2000 = new Dinero(2000, 0);
         do {
 

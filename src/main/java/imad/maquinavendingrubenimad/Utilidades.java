@@ -85,7 +85,7 @@ public class Utilidades {
         System.out.println("Precio producto: " + precioProducto);
         double dineroIntroducido = 0;
         boolean dineroSuficiente = true;
-        int cont5 = 0,cont10 = 0,cont20 = 0,cont50 = 0,cont100 = 0,cont200 = 0,cont500 = 0,cont1000 = 0,cont2000 = 0;
+        int cont5 = 0, cont10 = 0, cont20 = 0, cont50 = 0, cont100 = 0, cont200 = 0, cont500 = 0, cont1000 = 0, cont2000 = 0;
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
@@ -163,15 +163,15 @@ public class Utilidades {
                         dineroSuficiente = false;
                         formaDePago = true;
                         JOptionPane.showMessageDialog(null, darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
-                        d5.setCantidad(d5.getCantidad()+cont5);
-                        d10.setCantidad(d10.getCantidad()+cont10);
-                        d20.setCantidad(d20.getCantidad()+cont20);
-                        d50.setCantidad(d50.getCantidad()+cont50);
-                        d100.setCantidad(d100.getCantidad()+cont100);
-                        d200.setCantidad(d200.getCantidad()+cont200);
-                        d500.setCantidad(d500.getCantidad()+cont500);
-                        d1000.setCantidad(d1000.getCantidad()+cont1000);
-                        d2000.setCantidad(d2000.getCantidad()+cont2000);
+                        d5.setCantidad(d5.getCantidad() + cont5);
+                        d10.setCantidad(d10.getCantidad() + cont10);
+                        d20.setCantidad(d20.getCantidad() + cont20);
+                        d50.setCantidad(d50.getCantidad() + cont50);
+                        d100.setCantidad(d100.getCantidad() + cont100);
+                        d200.setCantidad(d200.getCantidad() + cont200);
+                        d500.setCantidad(d500.getCantidad() + cont500);
+                        d1000.setCantidad(d1000.getCantidad() + cont1000);
+                        d2000.setCantidad(d2000.getCantidad() + cont2000);
                         //      System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
                     } else {
                         JOptionPane.showMessageDialog(null, "No hay dinero suficiente en la maquina\nIntroduce la cantidad exacta");
@@ -313,9 +313,7 @@ public class Utilidades {
     //método para cambiar la cantidad del dinero de la máquina
     public static void cambiarCantidad(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
 
-        String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
-                + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
-        int moneda = Integer.parseInt(monedaString);
+        int moneda = joptionMoneda();
         int cantidad = 0;
         switch (moneda) {
 
@@ -473,7 +471,27 @@ public class Utilidades {
                 stringCantidad = JOptionPane.showInputDialog(null, "¿Que cantidad vas a añadir?");
                 cantidad = Integer.parseInt(stringCantidad);
                 seguir = false;
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "El valor ingresado no es un número");
+
+            }
+
+        } while (seguir);
+        return cantidad;
+    }
+
+    //try catch para las excepciones 
+    public static int joptionMoneda() {
+        boolean seguir = true;
+        String stringCantidad;
+        int cantidad = 0;
+        do {
+            try {
+                String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
+                        + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
+                int moneda = Integer.parseInt(monedaString);
+                seguir = false;
+            } catch (NumberFormatException nfe) {
                 JOptionPane.showMessageDialog(null, "El valor ingresado no es un número");
 
             }
