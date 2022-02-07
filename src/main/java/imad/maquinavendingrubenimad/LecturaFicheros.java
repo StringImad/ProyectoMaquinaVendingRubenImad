@@ -5,7 +5,6 @@
  */
 package imad.maquinavendingrubenimad;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -18,9 +17,10 @@ import java.util.Scanner;
  * @author MSI
  */
 public class LecturaFicheros {
+
     //metodo public estatico que devuelve una lista con objetos Bandeja apartir de un fichero leido 
-     public static ArrayList<Bandeja> leerFicheroCsvArticulos(String idFichero) {
-         ArrayList<Bandeja> listaArticulos = new ArrayList<>();
+    public static ArrayList<Bandeja> leerFicheroCsvArticulos(String idFichero) {
+        ArrayList<Bandeja> listaArticulos = new ArrayList<>();
         String[] tokens;
         String linea;
 

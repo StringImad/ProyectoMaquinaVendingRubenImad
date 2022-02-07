@@ -221,6 +221,7 @@ public class Utilidades {
         return formaDePago;
     }
 //metodo que crea y devuelve un objeto tarjeta
+
     public static TarjetaDeCredito validacionTarjetaIntroducida() {
         String codigo;
         int cvv = 0;
@@ -232,6 +233,7 @@ public class Utilidades {
         return introducida;
     }
 //metodo privado y estatico que devuelve un string con el codigo de 16 digitos creado correctamente 
+
     private static String compruebaIntroduccion16Numeros() {
         String codigo = null;
         double codigoComprobacion;
@@ -257,6 +259,7 @@ public class Utilidades {
         return codigo;
     }
 //metodo que devuelve YeraMonth correctos
+
     private static YearMonth compruebaIntroduccionFechaCaducidad() {
         String fechaCaducidad;
         int mes = 0, anyo = 0;

@@ -321,7 +321,7 @@ public class Programa {
 
     //metodo privado y estatico que tiene como parametros la lista de bandejas y una variable booleana que lo utilizamos para modificar el stock
     private static void modificarStock(ArrayList bandeja, boolean comprobarIntroduccionIncorrectaUsuario) {
-                ArrayList<Bandeja> listaBandejas = bandeja;
+        ArrayList<Bandeja> listaBandejas = bandeja;
         do {
             comprobarIntroduccionIncorrectaUsuario = false;
             try {

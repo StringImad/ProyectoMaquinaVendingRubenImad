@@ -15,10 +15,12 @@ import java.util.ArrayList;
  */
 public class TarjetaDeCredito {
 //Declaracion de variables
+
     private String numero;
     private YearMonth fechaVencimiento;
     private int cvv;
 //constructor
+
     public TarjetaDeCredito(String numero, YearMonth fechaVencimiento, int cvv) {
         this.numero = numero;
         this.fechaVencimiento = fechaVencimiento;
@@ -31,10 +33,12 @@ public class TarjetaDeCredito {
         return fecha.isAfter(ahora);
     }
 //metodo publico y estatico que devuelve true si las tarjetas son iguales
+
     public static boolean CompararTarjetas(TarjetaDeCredito t1, TarjetaDeCredito t2) {
         return t1.getNumero().equals(t2.getNumero()) && t1.getFechaVencimiento().equals(t2.getFechaVencimiento()) && t1.getCvv() == t2.getCvv();
     }
 //metodo publico y estatico que devuelve true si alguna de las tarjetas de la lista coincide con la tarjeta introducida
+
     public static boolean CompararTarjetasLista(TarjetaDeCredito t1, ArrayList t2) {
         ArrayList<TarjetaDeCredito> lista = t2;
         boolean comprobacion = false;

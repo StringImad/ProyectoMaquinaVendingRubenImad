@@ -16,25 +16,26 @@ public class MaquinaVending {
     //Declaracion de variables
     private double deposito;
     private String ubicacion;
-    private final UUID id;
-    private final String psw;
+    private final UUID ID;
+    private final String PSW;
     private LocalDate fecha;
 //Constructor
+
     public MaquinaVending() {
-        this.id = UUID.randomUUID();
-        this.psw = Utilidades.getPassword();
+        this.ID = UUID.randomUUID();
+        this.PSW = Utilidades.getPassword();
     }
-    
-    
+
     //constructor parametrizado
     public MaquinaVending(int deposito, String ubicacion, LocalDate fecha) {
         this.deposito = deposito;
         this.ubicacion = ubicacion;
-        this.id = UUID.randomUUID();
-        this.psw = Utilidades.getPassword();
+        this.ID = UUID.randomUUID();
+        this.PSW = Utilidades.getPassword();
         this.fecha = fecha;
     }
 //Geters and setter
+
     public double getDeposito() {
         return deposito;
     }
@@ -44,7 +45,7 @@ public class MaquinaVending {
     }
 
     public UUID getId() {
-        return id;
+        return ID;
     }
 
     public LocalDate getFecha() {
@@ -63,11 +64,10 @@ public class MaquinaVending {
         this.fecha = fecha;
     }
 //toString
+
     @Override
     public String toString() {
-        return "MaquinaVending{" + "deposito=" + deposito + ", ubicacion=" + ubicacion + ", id=" + id + ", fecha=" + fecha + '}';
+        return "MaquinaVending{" + "deposito=" + deposito + ", ubicacion=" + ubicacion + ", id=" + ID + ", fecha=" + fecha + '}';
     }
-
-    
 
 }
