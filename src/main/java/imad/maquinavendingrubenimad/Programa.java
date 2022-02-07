@@ -27,7 +27,7 @@ public class Programa {
         //Creamos un arrayList de bandejas apartir de un fichero csv
         ArrayList<Bandeja> listaBandejas = LecturaFicheros.leerFicheroCsvArticulos("articulos.csv");
         boolean repetir = true;
-        LocalDate ultimaFecha;
+        LocalDate ultimaFecha = LocalDate.now();
         boolean repetirMenuAdmin = true;
         int dineroRecaudado = 0;
         MaquinaVending m1 = new MaquinaVending();
@@ -231,6 +231,7 @@ public class Programa {
                                     break;
                                 case 1:
                                     Utilidades.recaudarDinero(d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
+                                    JOptionPane.showMessageDialog(null, "Se ha recaudado el día: " + ultimaFecha );
                                     break;
                                 case 2:
                                     JOptionPane.showMessageDialog(null, "volviendo al menu");
@@ -258,31 +259,31 @@ public class Programa {
             } else {
                 switch ((codigoSwitch)) {
                     case 1:
-                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
 
                         break;
                     case 2:
-                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
 
                         break;
 
                     case 3:
-                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
 
                         break;
 
                     case 4:
-                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
 
                         break;
 
                     case 5:
-                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
 
                         break;
 
                     case 6:
-                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000);
+                        compraProducto(codigo, listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000);
 
                         break;
                 }
@@ -290,13 +291,13 @@ public class Programa {
         } while (repetir);
     }
 //metodo privado y estatico que recibe el codigo y la lista de bandeja
-    private static void compraProducto(String codigo, ArrayList bandeja, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
+    private static void compraProducto(String codigo, ArrayList bandeja, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
         ArrayList<Bandeja> listaBandejas = bandeja;
 
         for (Bandeja listaBandeja : listaBandejas) {
             if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
                 JOptionPane.showMessageDialog(null, "El precio es " + (listaBandeja.getPrecioProducto()) / 100 + "€.");
-                if (Utilidades.formaPagoEfectivoTarjeta((codigo), listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000)) {
+                if (Utilidades.formaPagoEfectivoTarjeta((codigo), listaBandejas, d5, d10, d20, d50, d100, d200, d500, d1000, d2000)) {
                     JOptionPane.showMessageDialog(null, "Recoja su producto, gracias por su compra");
                     listaBandeja.setStockBandeja(listaBandeja.getStockBandeja() - 1);
 

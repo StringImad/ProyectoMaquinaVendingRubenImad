@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,7 +62,7 @@ public class Utilidades {
         return pswd;
     }
 
-    public static boolean formaPagoEfectivoTarjeta(String codigo, ArrayList lista, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
+    public static boolean formaPagoEfectivoTarjeta(String codigo, ArrayList lista, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
         ArrayList<Bandeja> listaBandejas = lista;
         TarjetaDeCredito tarjeta = new TarjetaDeCredito("1111222233334444", YearMonth.of(2023, 3), 222);
         TarjetaDeCredito tarjeta2 = new TarjetaDeCredito("1111222233334444", YearMonth.of(2021, 3), 222);
@@ -84,6 +85,7 @@ public class Utilidades {
         System.out.println("Precio producto: " + precioProducto);
         double dineroIntroducido = 0;
         boolean dineroSuficiente = true;
+        int cont5 = 0,cont10 = 0,cont20 = 0,cont50 = 0,cont100 = 0,cont200 = 0,cont500 = 0,cont1000 = 0,cont2000 = 0;
         String[] botones = {"Efectivo", "Tarjeta", "salir"};
         int ventana = JOptionPane.showOptionDialog(null,
                 "Elige el modo de pago:",
@@ -96,69 +98,85 @@ public class Utilidades {
             case 0:
                 JOptionPane.showMessageDialog(null, "Ha seleccionado el pago en efectivo\nIntroduce el importe");
                 do {
-                    String[] botonesDinero = {"5cts", "10cts", "20cts", "50cts", "1€", "2€", "5€", "10€", "20€", "salir"};
+                    do {
+                        String[] botonesDinero = {"5cts", "10cts", "20cts", "50cts", "1€", "2€", "5€", "10€", "20€", "salir"};
 
-                    int ventanaDinero = JOptionPane.showOptionDialog(null,
-                            "Introduce el dinero:",
-                            "Bienvenido al sistema de cobro",
-                            JOptionPane.INFORMATION_MESSAGE,
-                            JOptionPane.QUESTION_MESSAGE, null,
-                            botonesDinero, botonesDinero[0]);
+                        int ventanaDinero = JOptionPane.showOptionDialog(null,
+                                "Introduce el dinero:",
+                                "Bienvenido al sistema de cobro",
+                                JOptionPane.INFORMATION_MESSAGE,
+                                JOptionPane.QUESTION_MESSAGE, null,
+                                botonesDinero, botonesDinero[0]);
 
-                    switch (ventanaDinero) {
-                        case 0:
-                            dineroIntroducido += 5;
-                            break;
-                        case 1:
-                            dineroIntroducido += 10;
-                            System.out.println("Diner introdudido: " + dineroIntroducido);
+                        switch (ventanaDinero) {
+                            case 0:
+                                dineroIntroducido += 5;
+                                cont5++;
+                                break;
+                            case 1:
+                                dineroIntroducido += 10;
+                                System.out.println("Diner introdudido: " + dineroIntroducido);
+                                cont10++;
+                                break;
+                            case 2:
+                                dineroIntroducido += 20;
+                                cont20++;
+                                break;
+                            case 3:
+                                dineroIntroducido += 50;
+                                System.out.println("Diner introdudido: " + dineroIntroducido);
+                                cont50++;
+                                break;
+                            case 4:
+                                dineroIntroducido += 100;
+                                cont100++;
+                                break;
+                            case 5:
+                                dineroIntroducido += 200;
+                                cont200++;
+                                break;
+                            case 6:
+                                dineroIntroducido += 500;
+                                cont500++;
+                                break;
+                            case 7:
+                                dineroIntroducido += 1000;
+                                cont1000++;
+                                break;
+                            case 8:
+                                dineroIntroducido += 2000;
+                                cont2000++;
+                                break;
+                            case 9:
+                                JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
+                                dineroSuficiente = false;
+                                break;
+                        }
+                        if (dineroIntroducido < precioProducto) {
+                            JOptionPane.showMessageDialog(null, "introduzca el siguiente importe, dinero actual:" + dineroIntroducido / 100 + "€");
+                        }
+                    } while (dineroIntroducido < precioProducto || !dineroSuficiente);
 
-                            break;
-                        case 2:
-                            dineroIntroducido += 20;
-
-                            break;
-                        case 3:
-                            dineroIntroducido += 50;
-                            System.out.println("Diner introdudido: " + dineroIntroducido);
-
-                            break;
-                        case 4:
-                            dineroIntroducido += 100;
-
-                            break;
-                        case 5:
-                            dineroIntroducido += 200;
-
-                            break;
-                        case 6:
-                            dineroIntroducido += 500;
-
-                            break;
-                        case 7:
-                            dineroIntroducido += 1000;
-
-                            break;
-                        case 8:
-                            dineroIntroducido += 2000;
-
-                            break;
-                        case 9:
-                            JOptionPane.showMessageDialog(null, "Operacion cancelada con exito");
-                            dineroSuficiente = false;
-                            break;
-                    }
                     System.out.println("dinero introducido fase final: " + dineroIntroducido + " precioProducto: " + precioProducto);
-                    if (dineroIntroducido >= precioProducto&&!(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido).contains("No"))) {
+                    if (dineroIntroducido >= precioProducto && !(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido).contains("No"))) {
                         dineroSuficiente = false;
                         formaDePago = true;
                         JOptionPane.showMessageDialog(null, darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
-                  //      System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
+                        d5.setCantidad(d5.getCantidad()+cont5);
+                        d10.setCantidad(d10.getCantidad()+cont10);
+                        d20.setCantidad(d20.getCantidad()+cont20);
+                        d50.setCantidad(d50.getCantidad()+cont50);
+                        d100.setCantidad(d100.getCantidad()+cont100);
+                        d200.setCantidad(d200.getCantidad()+cont200);
+                        d500.setCantidad(d500.getCantidad()+cont500);
+                        d1000.setCantidad(d1000.getCantidad()+cont1000);
+                        d2000.setCantidad(d2000.getCantidad()+cont2000);
+                        //      System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
                     } else {
                         JOptionPane.showMessageDialog(null, "No hay dinero suficiente en la maquina\nIntroduce la cantidad exacta");
                         dineroIntroducido = 0;
                     }
-                } while ((dineroSuficiente));
+                } while (dineroSuficiente);
 //                for (Bandeja listaBandeja : listaBandejas) {
 //
 //                    if (listaBandeja.getCodigoProducto() == Integer.parseInt(codigo)) {
@@ -289,6 +307,7 @@ public class Utilidades {
         } while (comprobarIntroduccionIncorrectaUsuario);
         return cvv;
     }
+
     //método para cambiar la cantidad del dinero de la máquina
     public static void cambiarCantidad(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
 
@@ -410,6 +429,7 @@ public class Utilidades {
         }
 
     }
+
     //metodo para recaudar el dinero 
     public static void recaudarDinero(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
         double cantidad = 0;
@@ -431,8 +451,8 @@ public class Utilidades {
         d1000.setCantidad(0);
         cantidad += d2000.getValor() * d2000.getCantidad();
         d2000.setCantidad(0);
-        
-        JOptionPane.showMessageDialog(null, "Has recaudado:" + (cantidad/100) +"€");
+
+        JOptionPane.showMessageDialog(null, "Has recaudado:" + (cantidad / 100) + "€");
     }
 
     public static String consultarEfectivo(Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000, Dinero d2000) {
@@ -440,7 +460,7 @@ public class Utilidades {
                 + d20.getCantidad() + " monedas\n 50cts: " + d50.getCantidad() + " monedas\n 1€: " + d100.getCantidad() + " monedas \n 2€: "
                 + d200.getCantidad() + " monedas\n 5€: " + d500.getCantidad() + " billetes\n 10€: " + d1000.getCantidad() + " billetes\n 20€: " + d2000.getCantidad() + " billetes";
     }
-    
+
     //try catch para las excepciones 
     public static int joptionTryCatch() {
         boolean seguir = true;
@@ -453,9 +473,9 @@ public class Utilidades {
                 seguir = false;
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "El valor ingresado no es un número");
-                
+
             }
-             
+
         } while (seguir);
         return cantidad;
     }
