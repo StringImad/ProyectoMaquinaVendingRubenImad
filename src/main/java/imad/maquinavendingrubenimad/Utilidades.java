@@ -484,12 +484,12 @@ public class Utilidades {
     public static int joptionMoneda() {
         boolean seguir = true;
         String stringCantidad;
-        int cantidad = 0;
+        int moneda = 0;
         do {
             try {
                 String monedaString = JOptionPane.showInputDialog(null, "¿Que monedas quiere recargar (en centimos)? \n "
                         + "Las cantidades son: \n 5 centimos \n 10 centimos \n 20 centimos \n 50 centimos \n 100 centimos (1€) \n 200 centimos (2€) \n 500 centimos (5€)\n 1000 centimos (10€)");
-                int moneda = Integer.parseInt(monedaString);
+                moneda = Integer.parseInt(monedaString);
                 seguir = false;
             } catch (NumberFormatException nfe) {
                 JOptionPane.showMessageDialog(null, "El valor ingresado no es un número");
@@ -497,6 +497,6 @@ public class Utilidades {
             }
 
         } while (seguir);
-        return cantidad;
+        return moneda;
     }
 }
