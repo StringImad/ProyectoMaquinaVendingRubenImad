@@ -48,8 +48,13 @@ public class Programa {
                 codigo = JOptionPane.showInputDialog("El codigo del administrador es: " + CODIGO_GENERADO + "\n" + listaBandejas + "\nIntroduce un codigo");
 
                 try {
-                    if (codigo.equals(CODIGO_GENERADO)) {
-                        break;
+                    try {
+                        if (codigo.equals(CODIGO_GENERADO)) {
+                            break;
+                        }
+                    } catch (NullPointerException npe) {
+                        JOptionPane.showMessageDialog(null, "EL programa solo puede ser cancelado por el Administrador", "Error de formato",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                     codigoSwitch = Integer.parseInt(codigo);
                     comprobarIntroduccionIncorrectaUsuario = false;
@@ -174,10 +179,10 @@ public class Programa {
                             switch (ventanaStock) {
                                 case 0:
                                     String stock = "";
-                                    stock = listaBandejas.stream().map(listaBandeja -> listaBandeja.toStringStock() + "\n").reduce(stock, String::concat);
-//                                    for (Bandeja listaBandeja : listaBandejas) {
-//                                        stock += listaBandeja.toStringStock() + "\n";
-//                                    }
+                                  //  stock = listaBandejas.stream().map(listaBandeja -> listaBandeja.toStringStock() + "\n").reduce(stock, String::concat);
+                                    for (Bandeja listaBandeja : listaBandejas) {
+                                        stock += listaBandeja.toStringStock() + "\n";
+                                    }
                                     JOptionPane.showMessageDialog(null, stock);
 
                                     break;
@@ -285,7 +290,6 @@ public class Programa {
         } while (repetir);
     }
 //metodo privado y estatico que recibe el codigo y la lista de bandeja
-
     private static void compraProducto(String codigo, ArrayList bandeja, Dinero d5, Dinero d10, Dinero d20, Dinero d50, Dinero d100, Dinero d200, Dinero d500, Dinero d1000) {
         ArrayList<Bandeja> listaBandejas = bandeja;
 

@@ -149,12 +149,14 @@ public class Utilidades {
                             break;
                     }
                     System.out.println("dinero introducido fase final: " + dineroIntroducido + " precioProducto: " + precioProducto);
-                    if (dineroIntroducido >= precioProducto) {
+                    if (dineroIntroducido >= precioProducto&&!(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido).contains("No"))) {
                         dineroSuficiente = false;
                         formaDePago = true;
-                        System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
+                        JOptionPane.showMessageDialog(null, darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
+                  //      System.out.println(darCambio(d5, d10, d20, d50, d100, d200, d500, d1000, (int) precioProducto, (int) dineroIntroducido));
                     } else {
-                        System.out.println("Fallo inesperado");
+                        JOptionPane.showMessageDialog(null, "No hay dinero suficiente en la maquina\nIntroduce la cantidad exacta");
+                        dineroIntroducido = 0;
                     }
                 } while ((dineroSuficiente));
 //                for (Bandeja listaBandeja : listaBandejas) {
